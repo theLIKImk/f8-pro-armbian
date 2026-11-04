@@ -3,7 +3,8 @@
 This tool is not part of the image build and never touches the tablet.
 """
 from pathlib import Path
-import hashlib,json,os,sys,time,requests,subprocess,base64
+import hashlib,json,os,sys,time,requests,threading
+from concurrent.futures import ThreadPoolExecutor,as_completed
 
 P=Path(__file__).resolve().parents[1]
 O=P/'outputs/armbian/f8-armbian-20261103-r2'
@@ -16,9 +17,13 @@ TAG='v2026.11.03-r2'
 session=requests.Session()
 session.headers.update({'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json','User-Agent':'F8-release-publisher','X-GitHub-Api-Version':'2022-11-28'})
 
+lock=threading.RLock();transfers={}
 def progress(phase,**kw):
- (W/'upload-progress.json').write_text(json.dumps({'phase':phase,'time':time.time(),**kw},indent=2),encoding='utf-8')
- print(json.dumps({'phase':phase,**kw}),flush=True)
+ with lock:
+  if phase=='uploading' and kw.get('total',0)>100*1024**2:transfers[kw['name']]={'sent':kw['sent'],'total':kw['total']}
+  kw['transfers']=dict(transfers)
+  (W/'upload-progress.json').write_text(json.dumps({'phase':phase,'time':time.time(),**kw},indent=2),encoding='utf-8')
+  print(json.dumps({'phase':phase,**kw}),flush=True)
 def api(method,url,**kw):
  r=session.request(method,url,timeout=90,**kw)
  if not r.ok:raise RuntimeError(f'GitHub API {r.status_code}: '+r.text[:800])
@@ -30,20 +35,27 @@ try:
  archive=O/'F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip'
  expected=json.loads((O/'bundle.json').read_text())
  assert archive.stat().st_size==expected['bytes']
- size=1900*1024**2;whole=hashlib.sha256();parts=[]
- progress('splitting_and_verifying_archive')
- with archive.open('rb') as f:
-  i=1
-  while f.tell()<archive.stat().st_size:
-   dest=S/(archive.name+f'.{i:03d}');h=hashlib.sha256();remaining=min(size,archive.stat().st_size-f.tell())
-   with dest.open('wb') as d:
-    while remaining:
-     data=f.read(min(8*1024**2,remaining));assert data
-     d.write(data);whole.update(data);h.update(data);remaining-=len(data)
-   parts.append({'name':dest.name,'bytes':dest.stat().st_size,'sha256':h.hexdigest()});i+=1
- assert whole.hexdigest()==expected['sha256'],'Original archive hash mismatch'
- manifest={'original':expected,'parts':parts,'concatenation_order':[p['name'] for p in parts]}
- (S/'split-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+ if '--reuse-parts' in sys.argv:
+  manifest=json.loads((S/'split-manifest.json').read_text(encoding='utf-8'))
+  assert manifest['original']==expected
+  parts=manifest['parts'];assert sum(x['bytes'] for x in parts)==expected['bytes']
+  for x in parts:assert (S/x['name']).stat().st_size==x['bytes']
+  progress('reusing_verified_parts')
+ else:
+  size=1900*1024**2;whole=hashlib.sha256();parts=[]
+  progress('splitting_and_verifying_archive')
+  with archive.open('rb') as f:
+   i=1
+   while f.tell()<archive.stat().st_size:
+    dest=S/(archive.name+f'.{i:03d}');h=hashlib.sha256();remaining=min(size,archive.stat().st_size-f.tell())
+    with dest.open('wb') as d:
+     while remaining:
+      data=f.read(min(8*1024**2,remaining));assert data
+      d.write(data);whole.update(data);h.update(data);remaining-=len(data)
+    parts.append({'name':dest.name,'bytes':dest.stat().st_size,'sha256':h.hexdigest()});i+=1
+  assert whole.hexdigest()==expected['sha256'],'Original archive hash mismatch'
+  manifest={'original':expected,'parts':parts,'concatenation_order':[p['name'] for p in parts]}
+  (S/'split-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
  (S/'SHA256SUMS-parts.txt').write_text(''.join(x['sha256']+'  '+x['name']+'\n' for x in parts),encoding='ascii')
  for name in ['manifest.json','privacy-audit.json','checks-summary.json','ZIP-SHA256.txt','SHA256SUMS','README-刷入说明.txt']:
   (S/name).write_bytes((O/name).read_bytes())
@@ -98,25 +110,30 @@ except BaseException:
    if time.time()-self.last>5:
     self.last=time.time();progress('uploading',name=self.name,sent=self.f.tell(),total=os.fstat(self.f.fileno()).st_size)
    return data
- for path in sorted(S.iterdir()):
-  if not path.is_file():continue
+ def upload(path):
   digest=sha(path)
   old=next((a for a in assets if a['name']==path.name),None)
+  if old and old.get('state')!='uploaded':
+   api('DELETE',API+f"/releases/assets/{old['id']}");old=None
   if old:
    assert old['size']==path.stat().st_size and old.get('digest')=='sha256:'+digest,'Existing asset mismatch'
    asset=old
   else:
    progress('uploading',name=path.name,sent=0,total=path.stat().st_size)
    with path.open('rb') as f:
-    response=session.post(release['upload_url'].split('{')[0],params={'name':path.name},headers={'Content-Type':'application/octet-stream'},data=Reader(f,path.name),timeout=(60,3600))
+    response=requests.post(release['upload_url'].split('{')[0],params={'name':path.name},headers={**session.headers,'Content-Type':'application/octet-stream'},data=Reader(f,path.name),timeout=(60,3600))
    if not response.ok:raise RuntimeError(f'Asset upload {response.status_code}: '+response.text[:800])
    asset=response.json()
    assert asset['size']==path.stat().st_size and asset.get('digest')=='sha256:'+digest,'Server digest mismatch'
-  uploaded.append({'name':path.name,'bytes':asset['size'],'sha256':digest,'url':asset['browser_download_url']})
-  (W/'uploaded-assets.json').write_text(json.dumps(uploaded,indent=2),encoding='utf-8')
+  with lock:
+   uploaded.append({'name':path.name,'bytes':asset['size'],'sha256':digest,'url':asset['browser_download_url']})
+   (W/'uploaded-assets.json').write_text(json.dumps(uploaded,indent=2),encoding='utf-8')
   progress('asset_verified',name=path.name,bytes=asset['size'])
+ with ThreadPoolExecutor(max_workers=3) as pool:
+  futures=[pool.submit(upload,path) for path in sorted(S.iterdir()) if path.is_file()]
+  for future in as_completed(futures):future.result()
  # Publish only after every attachment has passed GitHub's size and SHA-256 check.
- release=api('PATCH',API+f"/releases/{release['id']}",json={'draft':False,'prerelease':True,'body':body})
+ release=api('PATCH',API+f"/releases/{release['id']}",json={'draft':False,'prerelease':True,'body':body,'target_commitish':commit})
  result={'complete':True,'release_url':release['html_url'],'tag':TAG,'commit':commit,'assets':uploaded}
  (W/'published.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
  progress('complete',url=release['html_url'],assets=len(uploaded))
