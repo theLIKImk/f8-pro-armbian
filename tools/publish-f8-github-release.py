@@ -95,11 +95,19 @@ except BaseException:
 
 文件系统检查、87项关键文件回读、隐私检查、ZIP CRC及向导6页离屏预览通过。本份完整包尚未进行实际新刷/冷启动验收。电池/充电采样、多指近距触摸、相机高级控制等限制仍存在。详细说明见仓库 README 和附件刷入说明。
 '''
- existing=session.get(API+'/releases/tags/'+TAG,timeout=60)
- if existing.status_code==404:
-  release=api('POST',API+'/releases',json={'tag_name':TAG,'target_commitish':commit,'name':'F8 Armbian 2026-11-03 R2 · 测试版','body':body,'draft':True,'prerelease':True})
+ # Drafts are not reliably returned by the /tags endpoint until the tag exists.
+ # Reuse their stable release ID instead of creating duplicate drafts on retry.
+ release_record=W/'release-id.json'
+ if release_record.exists():
+  release=api('GET',API+'/releases/'+str(json.loads(release_record.read_text())['id']))
  else:
-  existing.raise_for_status();release=existing.json();assert release['draft'],'Do not overwrite a published release'
+  candidates=[x for x in api('GET',API+'/releases?per_page=100') if x['tag_name']==TAG]
+  assert not any(not x['draft'] for x in candidates),'Do not overwrite a published release'
+  release=max(candidates,key=lambda x:x['id']) if candidates else None
+ if release is None:
+  release=api('POST',API+'/releases',json={'tag_name':TAG,'target_commitish':commit,'name':'F8 Armbian 2026-11-03 R2 · 测试版','body':body,'draft':True,'prerelease':True})
+ assert release['draft'] and release['tag_name']==TAG,'Do not overwrite a published release'
+ release_record.write_text(json.dumps({'id':release['id'],'tag':TAG}),encoding='utf-8')
  assets=api('GET',API+f"/releases/{release['id']}/assets?per_page=100")
  uploaded=[]
  class Reader:
@@ -111,7 +119,10 @@ except BaseException:
     self.last=time.time();progress('uploading',name=self.name,sent=self.f.tell(),total=os.fstat(self.f.fileno()).st_size)
    return data
  def upload(path):
-  digest=sha(path)
+  # The initial split hashed every byte. GitHub independently hashes the upload;
+  # avoid rereading all large parts solely to recover their already-saved digest.
+  saved=next((x for x in parts if x['name']==path.name),None)
+  digest=saved['sha256'] if saved else sha(path)
   old=next((a for a in assets if a['name']==path.name),None)
   if old and old.get('state')!='uploaded':
    api('DELETE',API+f"/releases/assets/{old['id']}");old=None
@@ -134,6 +145,11 @@ except BaseException:
   for future in as_completed(futures):future.result()
  # Publish only after every attachment has passed GitHub's size and SHA-256 check.
  release=api('PATCH',API+f"/releases/{release['id']}",json={'draft':False,'prerelease':True,'body':body,'target_commitish':commit})
+ release=api('GET',API+f"/releases/{release['id']}")
+ by_digest={a['digest']:a for a in release['assets']}
+ for item in uploaded:
+  actual=by_digest['sha256:'+item['sha256']];assert actual['size']==item['bytes']
+  item['url']=actual['browser_download_url']
  result={'complete':True,'release_url':release['html_url'],'tag':TAG,'commit':commit,'assets':uploaded}
  (W/'published.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
  progress('complete',url=release['html_url'],assets=len(uploaded))

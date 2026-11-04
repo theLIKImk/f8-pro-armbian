@@ -1,0 +1,97 @@
+{
+  "complete": true,
+  "public_release_verified": true,
+  "release_url": "https://github.com/theLIKImk/f8-pro-armbian/releases/tag/v2026.11.03-r2",
+  "tag_commit": "ec1eaacb277943974ddc81555374f7ef713348ce",
+  "assets": [
+    {
+      "local_name": "checks-summary.json",
+      "name": "checks-summary.json",
+      "bytes": 1767,
+      "sha256": "c59ee13d58a6eef27c6e0d6baf1e698064d035604879d404482d55b79202c500",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/checks-summary.json"
+    },
+    {
+      "local_name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.001",
+      "name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.001",
+      "bytes": 1992294400,
+      "sha256": "f0ad5aa964c38355ddb8a16af2289bdef59516ee2d3f4b69477ea575f991b17a",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.001"
+    },
+    {
+      "local_name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.002",
+      "name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.002",
+      "bytes": 1992294400,
+      "sha256": "b0d99fdb839e9b35fd350e46022dc4ea2891021222f391ef83db7c500e02e702",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.002"
+    },
+    {
+      "local_name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.003",
+      "name": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.003",
+      "bytes": 1066512932,
+      "sha256": "a47ae0f3af0d9f973079bf6852c5b10ad47ce8714b1c3da476b32cf125c8db74",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip.003"
+    },
+    {
+      "local_name": "manifest.json",
+      "name": "manifest.json",
+      "bytes": 11921,
+      "sha256": "653bc86aae519b5e654c29f868ca867cdc437b68831b8cd203b5846f7165ee22",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/manifest.json"
+    },
+    {
+      "local_name": "merge-release.py",
+      "name": "merge-release.py",
+      "bytes": 990,
+      "sha256": "3f49022539328bcd1fab04e516eb9d4f64b6bc77958ef853ddb34800e0e25bf8",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/merge-release.py"
+    },
+    {
+      "local_name": "privacy-audit.json",
+      "name": "privacy-audit.json",
+      "bytes": 558,
+      "sha256": "2ec94d32e7db7767c9684ba1edebeb715448502615ebf9db226688e7397adcf4",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/privacy-audit.json"
+    },
+    {
+      "local_name": "README-\u5237\u5165\u8bf4\u660e.txt",
+      "name": "README-.txt",
+      "bytes": 1259,
+      "sha256": "63fcafe63a6fc053f94cef2785a6119c3310715abe11a832ec4773bbcdc7e787",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/README-.txt"
+    },
+    {
+      "local_name": "SHA256SUMS",
+      "name": "SHA256SUMS",
+      "bytes": 203,
+      "sha256": "ef80bd2eb4897f0aace7da86d64795ccddd5a5ba86c770392f2ac60100bb60b4",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/SHA256SUMS"
+    },
+    {
+      "local_name": "SHA256SUMS-parts.txt",
+      "name": "SHA256SUMS-parts.txt",
+      "bytes": 330,
+      "sha256": "08e29b20f435db3045d3bc772fd0014a3671e505a912a37cb2be0ff271f421ee",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/SHA256SUMS-parts.txt"
+    },
+    {
+      "local_name": "split-manifest.json",
+      "name": "split-manifest.json",
+      "bytes": 1032,
+      "sha256": "7500184604150355581656fe54cf76ca85dfe8573ca743c2eb84655f6ed97700",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/split-manifest.json"
+    },
+    {
+      "local_name": "ZIP-SHA256.txt",
+      "name": "ZIP-SHA256.txt",
+      "bytes": 105,
+      "sha256": "edb740cea4921a14b3f5bb294b41f418b8451cac387a2bd558b2c670c59557b2",
+      "url": "https://github.com/theLIKImk/f8-pro-armbian/releases/download/v2026.11.03-r2/ZIP-SHA256.txt"
+    }
+  ],
+  "public_manifest_download_verified": true,
+  "abandoned_own_drafts_removed": [
+    433358280
+  ],
+  "time": 1793752358.2403433
+}
