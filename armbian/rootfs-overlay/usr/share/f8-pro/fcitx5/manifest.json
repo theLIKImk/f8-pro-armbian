@@ -1,0 +1,198 @@
+{
+  "version": "r1",
+  "symbol_font_version": "3.4.0",
+  "symbol_font_source": "https://github.com/ryanoasis/nerd-fonts",
+  "source_commit": "430feb3949b5721df4f37b7c559d52e28951c902",
+  "source": "https://github.com/fortime/fcitx5-osk",
+  "haptic_patch_sha256": "321127a6680df80b6ca998a4f2889bbbc8b5bfda4ca5830d9633e7d7f921b53b",
+  "http_actions_enabled": false,
+  "kwin_binary_plugin_enabled": false,
+  "packages": [
+    "fcitx5",
+    "fcitx5-chinese-addons",
+    "fcitx5-config-qt",
+    "fcitx5-frontend-qt5",
+    "fcitx5-frontend-qt6",
+    "fcitx5-frontend-gtk3",
+    "fcitx5-frontend-gtk4",
+    "fonts-noto-cjk",
+    "python3-pyqt6",
+    "fontconfig"
+  ],
+  "files": {
+    "usr/bin/fcitx5-osk": {
+      "sha256": "d42e9da0b5d2e0fae5ecd7d7d5a01e27307bd9d3f16afffade26ad1a5aeca1c8",
+      "mode": 493,
+      "bytes": 20225928
+    },
+    "usr/bin/fcitx5-osk-key-helper": {
+      "sha256": "cd58cadadd687d5ca7bbaaaddaa28e0d3a11f75cfa4a7b5b75203a6bbf77a891",
+      "mode": 493,
+      "bytes": 3284960
+    },
+    "usr/bin/fcitx5-osk-kwin-launcher": {
+      "sha256": "42528c300982f4e2a7736f2d2f4459caf4ad8eb0e477c35d760a8648361300af",
+      "mode": 493,
+      "bytes": 3680176
+    },
+    "usr/share/applications/f8-chinese-keyboard.desktop": {
+      "sha256": "6193ff972f8d491e64e7e7ca3a69fb807da3a161bb797bd2d1787de58a8b906e",
+      "mode": 420,
+      "bytes": 244
+    },
+    "usr/share/applications/f8-plasma-keyboard.desktop": {
+      "sha256": "3cf1504d2fb2ed54f711a14f8bb652df0699cc99448776ad186047d4b723b2e0",
+      "mode": 420,
+      "bytes": 245
+    },
+    "usr/share/applications/fyi.fortime.Fcitx5Osk.desktop": {
+      "sha256": "cca9dd962a09a7ad747561107e08f97857ab4907a7b886f23d681d28559301cc",
+      "mode": 420,
+      "bytes": 225
+    },
+    "usr/share/applications/fyi.fortime.Fcitx5Osk.KwinLauncher.desktop": {
+      "sha256": "70b003a9e85fdd9e3501792cbd6d9a24423ec61f7c7fb848d1a728bec6ec4ee4",
+      "mode": 420,
+      "bytes": 454
+    },
+    "usr/share/licenses/f8-nerd-fonts-symbols/LICENSE": {
+      "sha256": "84a7a98c82140fb12c37fe42b93805baa16024cb3e5acc599b7ffe612c55d847",
+      "mode": 420,
+      "bytes": 1082
+    },
+    "usr/share/licenses/fcitx5-osk/LICENSE": {
+      "sha256": "9119c37000a7cdffae523199f296c4684b2864c7f99955f884c1c308af13e5ee",
+      "mode": 420,
+      "bytes": 1064
+    },
+    "usr/share/icons/hicolor/scalable/apps/fyi.fortime.Fcitx5Osk.svg": {
+      "sha256": "1dbb0f4bedc8ec4fcf65373550818e78d8e37d60576eec1702e5d87440964f28",
+      "mode": 420,
+      "bytes": 105003
+    },
+    "usr/share/fonts/truetype/f8-pro/SymbolsNerdFont-Regular.ttf": {
+      "sha256": "71db104aa66567d0efe0b98758f9dfc1895573a453fe85fb53d1c38544a55106",
+      "mode": 420,
+      "bytes": 2440316
+    },
+    "usr/share/fcitx5-osk/custom_actions/ctrl_plus.toml": {
+      "sha256": "34d66b4301f04dd53200fbf5d59b42f24e6231aa26b9eb12ddaba465c1d93556",
+      "mode": 420,
+      "bytes": 319
+    },
+    "usr/share/fcitx5-osk/custom_actions/fn.toml": {
+      "sha256": "789256bbcc39715103a87ec0b47ee54a75532ee27b43e40a510085f4c82b8131",
+      "mode": 420,
+      "bytes": 1049
+    },
+    "usr/share/fcitx5-osk/layouts/landscape-wider-1.toml": {
+      "sha256": "71347a45e5c45f9dd1214eaae77dad0b843359334657c37909f0b049cb759623",
+      "mode": 420,
+      "bytes": 2012
+    },
+    "usr/share/fcitx5-osk/themes/breeze-light.toml": {
+      "sha256": "575c17c8c768dcbe36c5928052fb250f271e35bd9ff5f41e8784f305dd81ba64",
+      "mode": 420,
+      "bytes": 152
+    },
+    "usr/share/dbus-1/services/fyi.fortime.Fcitx5Osk.KwinLauncher.service": {
+      "sha256": "3e0b43c441f48dbac312302ad58f1132fb5357ce651ea3350d7ec976da2e9191",
+      "mode": 420,
+      "bytes": 109
+    },
+    "usr/share/dbus-1/services/fyi.fortime.Fcitx5Osk.service": {
+      "sha256": "f63a0106d2987f4d513d633d36013da6db976b62434109154e299ee94ead6917",
+      "mode": 420,
+      "bytes": 133
+    },
+    "usr/libexec/f8-pro/fcitx5-input-test.py": {
+      "sha256": "1ad41a1a1724222e4df2cf6698ca7f3bd38aa181a6f32eb2e65189133c366df9",
+      "mode": 420,
+      "bytes": 1693
+    },
+    "usr/libexec/f8-pro/switch-keyboard.py": {
+      "sha256": "05f04c02dc70f58db568cbf816c772e5afc5bbba57d3e3874b6611d016844d6f",
+      "mode": 493,
+      "bytes": 1018
+    },
+    "etc/fcitx5-osk-key-helper/config.toml": {
+      "sha256": "83f02c2056c9c0f3d281d2b8aca93dd31b64a6ec5d91d2dfc88b2ea58ba34bbe",
+      "mode": 420,
+      "bytes": 144
+    },
+    "etc/modules-load.d/f8-fcitx5-osk.conf": {
+      "sha256": "a771c9695d7283f7771adc00b680bd27391e6ac00e9fd026f4796067ee9a87eb",
+      "mode": 420,
+      "bytes": 7
+    },
+    "etc/skel/.gtkrc-2.0": {
+      "sha256": "18250d7c21b002c33f13b1744398e4aae7670f1201bb83cc9d625e3358b919b4",
+      "mode": 420,
+      "bytes": 22
+    },
+    "etc/xdg/fcitx5-osk/themes/breeze-light.toml": {
+      "sha256": "575c17c8c768dcbe36c5928052fb250f271e35bd9ff5f41e8784f305dd81ba64",
+      "mode": 420,
+      "bytes": 152
+    },
+    "etc/systemd/system/fcitx5-osk-key-helper.service": {
+      "sha256": "ce14b55f57654a92ce342d613bb55275cfcd2e1bb315fa1305096b8a9b5387ee",
+      "mode": 420,
+      "bytes": 250
+    },
+    "etc/skel/.config/kwinrc": {
+      "sha256": "5713b64c6be66952769d8ac7ded6239c867befd48f748af90d28513fe2c26a42",
+      "mode": 420,
+      "bytes": 120
+    },
+    "etc/skel/.config/autostart/org.fcitx.Fcitx5.desktop": {
+      "sha256": "22addcce41c618c8bcbd86a5ad042f42e8e7cfb687d7561a11e38b95a400f18c",
+      "mode": 420,
+      "bytes": 57
+    },
+    "etc/skel/.config/environment.d/60-f8-fcitx5.conf": {
+      "sha256": "032594def87c7727d62cba124899c2392cf881f894e3c92f34c386706980d1c9",
+      "mode": 420,
+      "bytes": 56
+    },
+    "etc/skel/.config/fcitx5/config": {
+      "sha256": "06d4cb03d574b6c8b8f972a987ae0375ec591a1c4f8d6cb2ad8a062f77512365",
+      "mode": 420,
+      "bytes": 291
+    },
+    "etc/skel/.config/fcitx5/profile": {
+      "sha256": "88230698b70818b9c09b11c020a53aee5ab0806f05f45aac5eca9dba46900f2b",
+      "mode": 420,
+      "bytes": 183
+    },
+    "etc/skel/.config/fcitx5-osk/config.toml": {
+      "sha256": "71fc69d177684c83f226e5f5c751d538a7821882606a2bd5d10c0b8d97cdc294",
+      "mode": 420,
+      "bytes": 330
+    },
+    "etc/skel/.config/gtk-3.0/settings.ini": {
+      "sha256": "baca36368be82caf9c20b9fb6ffa4e275465ba784d11a7d30b65807bb9558190",
+      "mode": 420,
+      "bytes": 31
+    },
+    "etc/skel/.config/gtk-4.0/settings.ini": {
+      "sha256": "baca36368be82caf9c20b9fb6ffa4e275465ba784d11a7d30b65807bb9558190",
+      "mode": 420,
+      "bytes": 31
+    },
+    "etc/skel/.config/plasma-workspace/env/f8-fcitx5.sh": {
+      "sha256": "32dc6dc662c9cecd89e5778ffa18d9bd0b9608c358c5c5da3748d09977a9bf0f",
+      "mode": 493,
+      "bytes": 131
+    },
+    "etc/dbus-1/system.d/fyi.fortime.Fcitx5OskKeyHelper.conf": {
+      "sha256": "414b91a3c70f109d48f1af585d1f65692d74435d5ebbf678fc6bb3f5bc5d21c7",
+      "mode": 420,
+      "bytes": 420
+    }
+  },
+  "links": {
+    "etc/systemd/system/multi-user.target.wants/fcitx5-osk-key-helper.service": "../fcitx5-osk-key-helper.service",
+    "etc/systemd/system/f8-desktop.target.wants/fcitx5-osk-key-helper.service": "../fcitx5-osk-key-helper.service"
+  }
+}

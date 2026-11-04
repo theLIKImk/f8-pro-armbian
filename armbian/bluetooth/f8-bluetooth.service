@@ -1,0 +1,18 @@
+[Unit]
+Description=F8-PRO BCM4362 UART9 firmware attachment (BT1)
+After=sddm.service f8-usb-otg.service bluetooth.service
+Wants=bluetooth.service
+ConditionPathExists=/dev/ttyS9
+ConditionPathExists=/sys/firmware/devicetree/base/chosen/f8-bluetooth-trial
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/f8-pro/bluetooth-start.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=8
+
+[Install]
+WantedBy=f8-desktop.target

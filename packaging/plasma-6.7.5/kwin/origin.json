@@ -1,0 +1,42 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kwin.git",
+  "tag": "6.7.5-3",
+  "commit": "09bed0b8b1b3f935969bd42c476bd64b5874a89d",
+  "upstream_tag_signature_verified": false,
+  "review": "Experimental opt-in adapter, only observed ABGR8888. 3.3 proved EGL/context initialization and explicit reject branch, while actual-frame import and physical output remain to verify. Source reuses native buffer import/lifecycle and rejects authentication.",
+  "changes": [
+    "aarch64",
+    "local pkgrel 3.4",
+    "fixed signer",
+    "omit CAP_SYS_NICE file capability in test build so secure loader does not discard private GPU environment; real-time performance remains to validate",
+    "Guard an undefined GLSL extension macro with defined(); exact failed shader A/B tested on Mali-G610",
+    "Limit CMAKE_AUTOGEN_PARALLEL=1",
+    "Opt-in experimental Mali RGB buffer adapter, exact publicly observed protocol signatures; bounded dimensions/formats/zero opaque params, native dma-buf import validation and lifecycle, no DRM authentication",
+    "Use only observed DRM_FORMAT_ABGR8888 (875708993 = AB24), keep bounded stride/dimensions and zero opaque parameters"
+  ],
+  "recipe_sha256": "8d081ef58b84d463712e3b06cfbd060f6b803002cdd8dbd839a7ce9237b782cd",
+  "built": true,
+  "additional_package_sha256": {},
+  "previous_artifacts": [
+    {
+      "package": "kwin-6.7.5-3.1-aarch64.pkg.tar.xz",
+      "sha256": "a9d470c5b332847d82df9c2a88d5c3efa01df5425be4f7e471f981c86db47c3b",
+      "outcome": "build/install passed; native KWin GLSL initialization failed; retained for rollback"
+    },
+    {
+      "package": "kwin-6.7.5-3.2-aarch64.pkg.tar.xz",
+      "sha256": "67d80ede2d1cece50f3cf13f22ae155d8c95b606303b408e7daaa1c49e54532b",
+      "outcome": "Mali GLES compositor verified; legacy client initialization unsupported"
+    },
+    {
+      "package": "kwin-6.7.5-3.3-aarch64.pkg.tar.xz",
+      "sha256": "b39dda0f8141deeab9eec69e6ab767f4a2608ae3e8aa958dd59a14f112001263",
+      "outcome": "Legacy EGL/context works; observed ABGR8888 explicitly rejected by initial narrow format guard"
+    }
+  ],
+  "auxiliary_sources": {
+    "f8-glsl-defined-guard.patch": "5afd29d927a553afbea2b4231ae8d3d91879101dc41494221fce69b13e37be3b",
+    "f8-mali-buffer-sharing.patch": "f26f9a1a7849085d43283f56b319b48bd01f24d0c6e0fa5dc61570786273104f"
+  },
+  "package_sha256": "5f332b6b2e08f02b0c53f34cc4577b60af0749f5521717c7b9eb2707b8435a8b"
+}

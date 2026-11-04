@@ -1,0 +1,71 @@
+{
+  "calibration_change_required": false,
+  "boot_change_required": false,
+  "native_root_files": [
+    {
+      "project_path": "armbian/motion/sensor-monitor.py",
+      "installed_path": "/usr/local/lib/f8-pro/sensor-monitor.py",
+      "sha256": "4d2da8e51fe693ad87624d64316c64dd9056bc5c6cd364f547d4c5e05946f4fe"
+    },
+    {
+      "project_path": "armbian/motion/sensor_examples.py",
+      "installed_path": "/usr/local/lib/f8-pro/sensor_examples.py",
+      "sha256": "bb9efa059d47a474d05004e00cdebaf77c6a2f71498974a71c3af852247d3527"
+    },
+    {
+      "project_path": "armbian/motion/motion_examples_math.py",
+      "installed_path": "/usr/local/lib/f8-pro/motion_examples_math.py",
+      "sha256": "a7013fb95a33ee6531b0b845995b574d11a139399765eb7a3a0a569cb720e14c"
+    },
+    {
+      "project_path": "armbian/motion/sensor_fusion.py",
+      "installed_path": "/usr/local/lib/f8-pro/sensor_fusion.py",
+      "sha256": "e43b48719eb253e01ed4c6a5ce50ff18f715715846dbd2ef80439f0d32db9037"
+    },
+    {
+      "project_path": "armbian/motion/fusion_view.py",
+      "installed_path": "/usr/local/lib/f8-pro/fusion_view.py",
+      "sha256": "163c1f6d468f3d38c5e1462ac5a31242166aebf4298e1e796dce0c00f958cccd"
+    },
+    {
+      "project_path": "armbian/motion/compass-view.py",
+      "installed_path": "/usr/local/lib/f8-pro/compass-view.py",
+      "sha256": "8852dcf163cb19f54d7a0379dcd2de998362f14fe3dcdc07e852f3e799488d34"
+    },
+    {
+      "project_path": "armbian/motion/optical-start.py",
+      "installed_path": "/usr/libexec/f8-pro/optical-start.py",
+      "sha256": "ed158e4e9a175d1943c79690ca1d7f652a506b84dc20b9a21e6e42c93862be8c"
+    },
+    {
+      "project_path": "armbian/motion/f8-optical.service",
+      "installed_path": "/etc/systemd/system/f8-optical.service",
+      "sha256": "47787ba3352bad55b288f0df625be4e0ae68c37e05a6c48a84b4a398b91e3031"
+    },
+    {
+      "project_path": "outputs/armbian/f8-em30918-r1/f8_em30918.ko",
+      "installed_path": "/usr/lib/modules/6.1.115-vendor-rk35xx/extra/f8-pro/f8_em30918.ko",
+      "sha256": "e5d684e20f6590583c23ad219d31c9dd964251c6fd5c7b1244cdc8996e092b4d"
+    },
+    {
+      "project_path": "outputs/armbian/f8-em30918-r1/module-check.json",
+      "installed_path": "/usr/share/f8-pro/sensors-f2/em30918-module.json",
+      "sha256": "9388965a1fc11e93710fa178d20b6d65d8dd8879a482a866545c51fc740c82db"
+    },
+    {
+      "project_path": "armbian/motion/gyro_stabilizer.py",
+      "installed_path": "/usr/local/lib/f8-pro/gyro_stabilizer.py",
+      "sha256": "06a47c42f2dcb91a5eac09bafd1425ceb8e045ff8ec693e34ff9a3e7c5e6b783"
+    }
+  ],
+  "revision": "F2",
+  "calibration_change_required_for_absolute_modes": true,
+  "personal_calibration_packaged": false,
+  "heading_offset_deg": 180,
+  "shared_output_on_demand": true,
+  "current_sensor_relay_revision": "R2",
+  "current_handoff": "docs/armbian-browser-pose-r2.md",
+  "relative_pose_method": "six-axis fused relative quaternion",
+  "relative_pose_user_accepted": true,
+  "shared_gyro_bias": "current user runtime; current boot only; not packaged"
+}

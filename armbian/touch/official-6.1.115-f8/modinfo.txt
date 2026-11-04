@@ -1,0 +1,11 @@
+filename:       /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.ko
+author:         Guan Yuwei, guanyuwei@basewin.com
+description:    GSL3673 touchscreen controller driver
+license:        GPL
+srcversion:     6A8F0920D4E483066E520A4
+alias:          i2c:f8-gsl-shuping
+alias:          of:N*T*Cf8-pro,gslx680-shuping-evalC*
+alias:          of:N*T*Cf8-pro,gslx680-shuping-eval
+depends:        
+name:           f8_gsl_shuping
+vermagic:       6.1.115-vendor-rk35xx SMP mod_unload modversions aarch64

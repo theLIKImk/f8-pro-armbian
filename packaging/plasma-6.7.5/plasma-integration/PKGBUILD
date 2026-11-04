@@ -1,0 +1,65 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+
+pkgbase=plasma-integration
+pkgname=plasma-integration
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=3.1
+pkgdesc='Qt Platform Theme integration plugins for the Plasma workspaces'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kguiaddons
+         kiconthemes
+         ki18n
+         kio
+         kjobwidgets
+         kservice
+         kstatusnotifieritem
+         kwidgetsaddons
+         kwindowsystem
+         libstdc++
+         libxcb
+         libxcursor
+         qqc2-breeze-style
+         qqc2-desktop-style
+         qt6-base
+         qt6-wayland
+         qt6-declarative
+         wayland)
+makedepends=(extra-cmake-modules plasma-wayland-protocols)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('0786c49f2f357744e0f4cfda49f55284faa1a97da85a667ca6cf1d8ab07aff89'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+
+source+=(f8-wayland-gles.patch)
+sha256sums+=('4bfd5a646d7fe73174d5389b0a241caad8441befa52132e1c60b8a02bb98f46d')
+
+prepare() {
+  patch -d "$pkgname-$pkgver" -p1 < "$srcdir/f8-wayland-gles.patch"
+}
+
+build() {
+  cmake -B build -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QT5=OFF
+  cmake --build build
+
+
+}
+
+package() {
+  depends+=(noto-fonts
+            ttf-hack
+            xdg-desktop-portal-kde)
+  DESTDIR="$pkgdir" cmake --install build
+}
+

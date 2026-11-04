@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Sensor Monitor
+Name[zh_CN]=F8 传感器观察
+Name[zh_TW]=F8 感測器觀察
+Comment=View accelerometer, gyroscope and screen orientation
+Exec=/usr/local/bin/f8-sensors
+Icon=utilities-system-monitor
+Terminal=false
+Categories=Utility;System;Monitor;
+StartupNotify=true

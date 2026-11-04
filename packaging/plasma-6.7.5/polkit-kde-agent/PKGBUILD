@@ -1,0 +1,42 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=polkit-kde-agent
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='Daemon providing a polkit authentication UI for KDE'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kirigami
+         knotifications
+         kwindowsystem
+         libstdc++
+         polkit-qt6
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-1-$pkgver.tar.xz{,.sig})
+sha256sums=('fb731dd979c0296994b5efe37b0a9cdeec5e704f91565540930effdbd7efee58'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-1-$pkgver \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

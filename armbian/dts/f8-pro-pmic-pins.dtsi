@@ -1,0 +1,91 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Preserve vendor pin functions verbatim; runtime shutdown/suspend untested.
+&rk806single {
+ pinctrl-names = "default", "pmic-power-off";
+ pinctrl-0 = <&pmic_pins &f8_rk806_dvs1_null &f8_rk806_dvs2_null &f8_rk806_dvs3_null>;
+ pinctrl-1 = <&f8_rk806_dvs1_pwrdn>;
+			pinctrl_rk806 {
+				gpio-controller;
+				#gpio-cells = <0x02>;
+
+				f8_rk806_dvs1_null: rk806_dvs1_null {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun0";
+				};
+
+				rk806_dvs1_slp {
+					pins = "gpio_pwrctrl1";
+					function = "pin_fun1";
+				};
+
+				f8_rk806_dvs1_pwrdn: rk806_dvs1_pwrdn {
+					pins = "gpio_pwrctrl1";
+					function = "pin_fun2";
+				};
+
+				rk806_dvs1_rst {
+					pins = "gpio_pwrctrl1";
+					function = "pin_fun3";
+				};
+
+				f8_rk806_dvs2_null: rk806_dvs2_null {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun0";
+				};
+
+				rk806_dvs2_slp {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun1";
+				};
+
+				rk806_dvs2_pwrdn {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun2";
+				};
+
+				rk806_dvs2_rst {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun3";
+				};
+
+				rk806_dvs2_dvs {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun4";
+				};
+
+				rk806_dvs2_gpio {
+					pins = "gpio_pwrctrl2";
+					function = "pin_fun5";
+				};
+
+				f8_rk806_dvs3_null: rk806_dvs3_null {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun0";
+				};
+
+				rk806_dvs3_slp {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun1";
+				};
+
+				rk806_dvs3_pwrdn {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun2";
+				};
+
+				rk806_dvs3_rst {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun3";
+				};
+
+				rk806_dvs3_dvs {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun4";
+				};
+
+				rk806_dvs3_gpio {
+					pins = "gpio_pwrctrl3";
+					function = "pin_fun5";
+				};
+			};
+};

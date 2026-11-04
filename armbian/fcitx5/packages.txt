@@ -1,0 +1,11 @@
+# Ubuntu/Debian runtime packages for F8 Fcitx5 integration.
+fcitx5
+fcitx5-chinese-addons
+fcitx5-config-qt
+fcitx5-frontend-qt5
+fcitx5-frontend-qt6
+fcitx5-frontend-gtk3
+fcitx5-frontend-gtk4
+fonts-noto-cjk
+python3-pyqt6
+fontconfig

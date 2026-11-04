@@ -1,0 +1,21 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kscreenlocker.git",
+  "tag": "6.7.5-1",
+  "commit": "2e8fa7fcc87345814ac0ca6024027f97d441856d",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD and signed source CMake requirements reviewed; KScreenLocker PAM files checked unchanged against recipe hashes",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed verified release signer"
+  ],
+  "auxiliary_sources": {
+    "kde.pam": "adba7bb7c27eb3a572e5e9d3cea0dbeebe59d3634472d1863d14fe892cb13b2b",
+    "kde-fingerprint.pam": "32734b4e1ec8b7f7e32b6cb2d68285c5c4f15f53736bba085096e76095181241",
+    "kde-smartcard.pam": "5d9c31cbf66e8e455b9559c929f184efd598f714743d5a1e6ce20adb44dc4b2d"
+  },
+  "recipe_sha256": "8a56f031bcabdcafffd8fef7a54fdc6417ff702d859e01a083df094bf17d85ca",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "9ba02913df463952f83934a442f62a3c609c74d611f39cd29ab0c617cd054825"
+}

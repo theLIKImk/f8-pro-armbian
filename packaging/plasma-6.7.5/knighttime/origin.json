@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/knighttime.git",
+  "tag": "6.7.5-1",
+  "commit": "9fa248e020cc4a25d44a52fa8072c7a8dcedbc73",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD only cmake build and DESTDIR install; top-level source CMake inspected",
+  "changes": [
+    "arch aarch64",
+    "local pkgrel .1",
+    "pin verified release signer"
+  ],
+  "recipe_sha256": "62dfe0ed639ddbf3d794e3fba1d92f16a78e8efde8a7456ab7c6bf593dcd42f2",
+  "built": true,
+  "package_sha256": "7ce1c689e0d289485c46895136252f0ae7a07e2b15feb4199e0522f45bde1e16"
+}

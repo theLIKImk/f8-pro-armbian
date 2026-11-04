@@ -1,0 +1,11 @@
+[Unit]
+Description=Bounded Panthor pixel readback and Wayland display test
+Wants=systemd-logind.service dbus.service
+After=basic.target systemd-logind.service dbus.service
+
+[Service]
+Type=exec
+ExecStart=/bin/sh /usr/libexec/f8-pro/graphics-run
+RuntimeMaxSec=85
+TimeoutStopSec=5
+KillMode=control-group

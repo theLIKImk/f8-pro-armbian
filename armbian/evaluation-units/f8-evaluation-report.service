@@ -1,0 +1,9 @@
+[Unit]
+Description=Export F8-PRO evaluation snapshot as a read-only RAM USB disk
+After=f8-evaluation.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /usr/libexec/f8-pro/evaluation-report systemd
+TimeoutStartSec=90
+RemainAfterExit=yes

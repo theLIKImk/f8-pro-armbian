@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/ocean-sound-theme.git",
+  "tag": "6.7.5-1",
+  "commit": "86563e9cd1c623d23dc5d4e3ae8f280dfaea3134",
+  "review": "CMake/DESTDIR install of sound assets; no source patch or install hook. Preserve architecture-independent metadata and require package to contain no ELF files.",
+  "changes": [
+    "local pkgrel1.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "da5ffcce3d209708f1b1bfb657ade9cf8db13a6c16bec0272c6506100ccd0436",
+  "built": false,
+  "package_architecture": "any",
+  "data_only": true
+}

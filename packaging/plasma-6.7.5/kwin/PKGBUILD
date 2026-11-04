@@ -1,0 +1,108 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kwin
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=3.4
+pkgdesc='An easy to use, but flexible, Wayland compositor'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(aurorae
+         breeze
+         glibc
+         iio-sensor-proxy
+         plasma-activities
+         kauth
+         kcmutils
+         kcolorscheme
+         kconfig
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kdeclarative
+         kdecoration
+         kglobalaccel
+         kglobalacceld
+         kguiaddons
+         ki18n
+         kidletime
+         kirigami
+         kitemmodels
+         knewstuff
+         knighttime
+         knotifications
+         kpackage
+         kquickcharts
+         kscreenlocker
+         kservice
+         ksvg
+         kwayland
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         lcms2
+         libcanberra
+         libdisplay-info
+         libdrm
+         libei
+         libepoxy
+         libevdev
+         libgcc
+         libinput
+         libpipewire
+         libqaccessibilityclient-qt6
+         libstdc++
+         libxcb
+         libxcvt
+         libxkbcommon
+         mesa
+         milou
+         pipewire-session-manager
+         libplasma
+         qt6-5compat
+         qt6-base
+         qt6-declarative
+         qt6-svg
+         qt6-tools
+         systemd-libs
+         vulkan-icd-loader
+         wayland
+         xcb-util-keysyms
+         xcb-util-wm)
+makedepends=(extra-cmake-modules
+             kdoctools
+             krunner
+             plasma-wayland-protocols
+             python
+             vulkan-headers
+             wayland-protocols
+             xorg-xwayland)
+optdepends=('plasma-keyboard: virtual keyboard')
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
+        f8-glsl-defined-guard.patch
+        f8-mali-buffer-sharing.patch)
+sha256sums=('6baa910b732d93c48c90f9c1cc685cc93d0b8de0cdf138c24192c045bc3a48e2'
+            'SKIP'
+            '5afd29d927a553afbea2b4231ae8d3d91879101dc41494221fce69b13e37be3b'
+            'f26f9a1a7849085d43283f56b319b48bd01f24d0c6e0fa5dc61570786273104f')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+prepare() {
+  patch --fuzz=0 -d "$pkgname-$pkgver" -p1 < f8-glsl-defined-guard.patch
+  patch --fuzz=0 -d "$pkgname-$pkgver" -p1 < f8-mali-buffer-sharing.patch
+}
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Compile-check only; display routing/PHY and full board remain pending.
+&dsi0 {
+		f8_panel: panel@0 {
+			status = "disabled";
+			compatible = "simple-panel-dsi";
+			reg = <0x00>;
+			backlight = <&f8_backlight>;
+			reset-delay-ms = <0xc8>;
+			enable-delay-ms = <0x14>;
+			prepare-delay-ms = <0x78>;
+			unprepare-delay-ms = <0x78>;
+			disable-delay-ms = <0x14>;
+			init-delay-ms = <0x14>;
+			width-mm = <0x6c>;
+			height-mm = <0xac>;
+			dsi,flags = <0xa03>;
+			dsi,format = <0x00>;
+			dsi,lanes = <0x04>;
+			power-supply = <&f8_lcd_power>;
+			reset-gpios = <&gpio1 0x08 0x01>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&f8_lcd_reset>;
+
+			display-timings {
+				native-mode = <&f8_timing>;
+
+				f8_timing: timing0 {
+					clock-frequency = <0x9896800>;
+					hactive = <0x4b0>;
+					vactive = <0x780>;
+					hback-porch = <0x3c>;
+					hfront-porch = <0x50>;
+					vback-porch = <0x19>;
+					vfront-porch = <0x23>;
+					hsync-len = <0x04>;
+					vsync-len = <0x01>;
+					hsync-active = <0x00>;
+					vsync-active = <0x00>;
+					de-active = <0x00>;
+					pixelclk-active = <0x00>;
+				};
+			};
+
+			ports {
+
+				port {
+
+					f8_panel_in: endpoint {
+						remote-endpoint = <&f8_dsi_out>;
+					};
+				};
+			};
+		};
+
+ ports {
+  port@1 {
+   reg = <1>;
+   f8_dsi_out: endpoint { remote-endpoint = <&f8_panel_in>; };
+  };
+ };
+};
+&pinctrl {
+ f8-lcd {
+  f8_lcd_reset: lcd-reset { rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>; };
+ };
+};

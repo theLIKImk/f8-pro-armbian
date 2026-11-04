@@ -1,0 +1,13 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kactivitymanagerd.git",
+  "tag": "6.7.5-1",
+  "commit": "606fa5a9c336b91d4386ed99b7e1dce5f320dc6e",
+  "review": "Official CMake build and DESTDIR packaging reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer"
+  ],
+  "recipe_sha256": "a8fc608b54252fec54529af202bfbc25dbb810ebbfa50ea0d22e38ae7719b3a6",
+  "built": false
+}

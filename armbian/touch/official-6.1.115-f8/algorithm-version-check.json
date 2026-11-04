@@ -1,0 +1,23 @@
+{
+  "scope": "Static constant version ID comparison, not full algorithm equivalence or hardware compatibility",
+  "records": [
+    {
+      "source": "new_f8_module",
+      "version_id": "0x20140421",
+      "function_sha256": "deeb3fba0451a7f11f414ed578010b809e42e2cf3a4f8d2aa52a706c82a518b0"
+    },
+    {
+      "source": "official_stock_module",
+      "version_id": "0x20140421",
+      "function_sha256": "deeb3fba0451a7f11f414ed578010b809e42e2cf3a4f8d2aa52a706c82a518b0"
+    },
+    {
+      "source": "old_factory_Image",
+      "file_offset": 14229572,
+      "version_id": "0x20140421"
+    }
+  ],
+  "version_ids_equal": true,
+  "full_algorithm_equivalence_proven": false,
+  "touch_hardware_tested": false
+}

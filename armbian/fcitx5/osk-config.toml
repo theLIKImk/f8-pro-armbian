@@ -1,0 +1,8 @@
+# Keep defaults for touch visibility, docked keyboard and rotation.
+manual_mode = false
+ignore_fcitx_show = false
+hide_delay = "500ms"
+log_directives = ["warn"]
+default_font = "Noto Sans CJK SC"
+default_nerd_font = "Symbols Nerd Font"
+external_font_paths = ["/usr/share/fonts/truetype/f8-pro/SymbolsNerdFont-Regular.ttf"]

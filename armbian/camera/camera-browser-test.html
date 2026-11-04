@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F8 浏览器相机测试</title><style>body{font:18px sans-serif;background:#181c22;color:#eee;max-width:1000px;margin:24px auto;padding:0 18px}button,a{font:inherit;padding:12px;margin:6px;border-radius:6px}video{background:#000;width:100%;max-height:65vh}#status{white-space:pre-wrap}a{color:#8cd5ff}</style>
+<h1>浏览器相机测试</h1><p>先在 F8 相机中开始预览并开启“兼容中继”，再点击启动。视频仅在本页面预览、录制，点击保存才下载文件。</p>
+<video id="preview" autoplay muted playsinline></video>
+<p><label><input id="mic" type="checkbox" checked>使用麦克风录音</label></p>
+<button id="start">启动相机</button><button id="stop" disabled>停止相机</button><button id="record" disabled>开始录像</button><button id="end" disabled>停止录像</button><a id="save" hidden>保存录像</a><p id="status">等待启动；请在浏览器弹窗中允许相机和麦克风。</p>
+<script>
+const $=s=>document.getElementById(s);let stream=null,recorder=null,chunks=[],blobUrl=null,frames=0;
+function status(s){$('status').textContent=s}
+$('start').onclick=async()=>{try{
+ $('start').disabled=true;status('正在请求权限…');stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:640},height:{ideal:480},frameRate:{ideal:14}},audio:$('mic').checked});
+ $('preview').srcObject=stream;await $('preview').play();$('stop').disabled=false;$('record').disabled=false;const t=stream.getVideoTracks()[0],s=t.getSettings();status(`${t.label} · ${s.width}×${s.height} · ${s.frameRate} fps · ${stream.getAudioTracks().length?'录音已启用':'无音轨'}`);
+}catch(e){status(e.name+'：'+e.message+'\n请确认兼容中继已开启，并使用本兼容浏览器入口。');$('start').disabled=false;stream?.getTracks().forEach(t=>t.stop());stream=null}};
+$('record').onclick=()=>{try{
+ chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+ recorder.onstop=()=>{if(blobUrl)URL.revokeObjectURL(blobUrl);const blob=new Blob(chunks,{type:recorder.mimeType});blobUrl=URL.createObjectURL(blob);$('save').href=blobUrl;$('save').download='F8-'+new Date().toISOString().replace(/[:.]/g,'-')+'.webm';$('save').hidden=false;$('record').disabled=!stream;$('end').disabled=true;status('录像已结束，可点击保存。大小：'+blob.size+' 字节')};
+ recorder.onerror=e=>status('录像失败：'+e.error.message);recorder.start(500);$('record').disabled=true;$('end').disabled=false;$('save').hidden=true;status('录像中…');
+}catch(e){status('录像失败：'+e.message)}};
+$('end').onclick=()=>{if(recorder?.state==='recording')recorder.stop()};
+$('stop').onclick=()=>{if(recorder?.state==='recording')recorder.stop();stream?.getTracks().forEach(t=>t.stop());stream=null;$('preview').srcObject=null;$('stop').disabled=true;$('record').disabled=true;$('start').disabled=false;status('已停止浏览器相机')};
+window.addEventListener('beforeunload',()=>{stream?.getTracks().forEach(t=>t.stop());if(blobUrl)URL.revokeObjectURL(blobUrl)});
+</script></html>

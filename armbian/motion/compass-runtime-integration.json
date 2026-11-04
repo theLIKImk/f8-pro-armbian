@@ -1,0 +1,68 @@
+{
+  "native_root_files": [
+    {
+      "project_path": "armbian/motion/official-6.1.115-compass/ak8975_magn.ko",
+      "installed_path": "/usr/libexec/f8-pro/compass/ak8975_magn.ko",
+      "sha256": "b97278dbecb43085d54c9e811a4af1105caf556fb9d722585a21671d79b22d31"
+    },
+    {
+      "project_path": "armbian/motion/compass-start.py",
+      "installed_path": "/usr/libexec/f8-pro/compass-start.py",
+      "sha256": "bc3982d5d6a440b505171089e1d88ee43904a04925763b8d480455f3c76d7e3e"
+    },
+    {
+      "project_path": "armbian/motion/f8-compass.service",
+      "installed_path": "/etc/systemd/system/f8-compass.service",
+      "sha256": "e5accc7c9841e5bd7e25ed22b724feb7bab4e444b9eaa84242fb0d67fefddb9a"
+    },
+    {
+      "project_path": "armbian/motion/compass-view.py",
+      "installed_path": "/usr/local/lib/f8-pro/compass-view.py",
+      "sha256": "8852dcf163cb19f54d7a0379dcd2de998362f14fe3dcdc07e852f3e799488d34"
+    },
+    {
+      "project_path": "tools/install-f8-compass-view.py (embedded launcher)",
+      "installed_path": "/usr/local/bin/f8-compass",
+      "sha256": "2fefca311ac9ce6d870f64b410bc108afad68a48ecc2f679110832c8f32a835d"
+    },
+    {
+      "project_path": "armbian/motion/f8-compass.desktop",
+      "installed_path": "/usr/local/share/applications/f8-compass.desktop",
+      "sha256": "a25b5e4a2a65e0ffd24fec6a79aee298aac4a62c3efd8adceeb603691abb5b76"
+    },
+    {
+      "project_path": "armbian/motion/sensor_fusion.py",
+      "installed_path": "/usr/local/lib/f8-pro/sensor_fusion.py",
+      "sha256": "e43b48719eb253e01ed4c6a5ce50ff18f715715846dbd2ef80439f0d32db9037"
+    },
+    {
+      "project_path": "armbian/motion/gyro_stabilizer.py",
+      "installed_path": "/usr/local/lib/f8-pro/gyro_stabilizer.py",
+      "sha256": "06a47c42f2dcb91a5eac09bafd1425ceb8e045ff8ec693e34ff9a3e7c5e6b783"
+    }
+  ],
+  "requires_boot": "S1 motion profile and existing root integration",
+  "new_boot_required": false,
+  "enabled_service": "f8-compass.service",
+  "compass_driver": "ak8975_magn",
+  "i2c_client_name": "AK8963",
+  "address": "3-000f",
+  "magnetic_readout_verified": true,
+  "user_calibration_verified": false,
+  "north_heading_verified": false,
+  "reboot_verified": false,
+  "viewer_autostart": false,
+  "compass_viewer_revision": 5,
+  "compass_cardinals": "rotating N/E/S/W",
+  "compass_calibration_method": "flat horizontal hard-iron circle fit; Z not calibrated",
+  "calibration_saved_on_device": true,
+  "calibration_version": 3,
+  "compass_mount_matrix": "0,-1,0;-1,0,0;0,0,-1",
+  "user_north_east_reference_passed": true,
+  "quantified_heading_accuracy_verified": false,
+  "heading_reversal_user_accepted": true,
+  "three_axis_calibration_supported": true,
+  "tilt_compensation_user_accepted": true,
+  "current_sensor_relay_revision": "R2",
+  "current_handoff": "docs/armbian-browser-pose-r2.md"
+}

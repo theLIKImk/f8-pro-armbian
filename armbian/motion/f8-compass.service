@@ -1,0 +1,14 @@
+[Unit]
+Description=F8-PRO AK8963 IIO compass binding
+After=f8-motion.service
+Wants=f8-motion.service
+ConditionPathExists=/sys/firmware/devicetree/base/chosen/f8-motion-trial
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/f8-pro/compass-start.py
+RemainAfterExit=yes
+TimeoutStartSec=30
+
+[Install]
+WantedBy=f8-desktop.target

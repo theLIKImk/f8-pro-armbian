@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$(cat /proc/sys/kernel/random/boot_id)" = d7fc7e8b-9936-4190-9b5b-3ec1a33b0576 ]; then
+    kdialog --title '相机测试' --error '本次启动的摄像头链路发生过内核异常，请先刷入 C2 并重新启动，再打开相机测试。'
+    exit 1
+fi
+exec /usr/bin/qv4l2 "$@"

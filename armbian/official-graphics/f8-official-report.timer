@@ -1,0 +1,7 @@
+[Unit]
+Description=Export F8 official Armbian GPU/display results
+
+[Timer]
+OnActiveSec=110s
+AccuracySec=1s
+Unit=f8-official-report.service

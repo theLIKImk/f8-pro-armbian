@@ -1,0 +1,9 @@
+[Unit]
+Description=Export readonly RAM USB graphics snapshot
+After=basic.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /usr/libexec/f8-pro/graphics-report systemd
+TimeoutStartSec=90
+RemainAfterExit=yes

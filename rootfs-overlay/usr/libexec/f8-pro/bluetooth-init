@@ -1,0 +1,24 @@
+#!/usr/bin/python
+"""Stable local Bluetooth address; execute only on the F8-PRO target."""
+import hashlib
+import os
+from pathlib import Path
+import re
+
+
+def address(machine_id):
+    machine_id = machine_id.strip().lower()
+    if not re.fullmatch('[0-9a-f]{32}', machine_id) or machine_id == '0' * 32:
+        raise ValueError('A valid first-boot machine-id is required')
+    value = bytearray(hashlib.sha256(b'f8-pro-bluetooth\0' + machine_id.encode('ascii')).digest()[:6])
+    value[0] = (value[0] | 2) & 254
+    return ':'.join('{:02X}'.format(part) for part in value)
+
+
+if __name__ == '__main__':
+    mac = address(Path('/etc/machine-id').read_text())
+    program = '/usr/libexec/f8-pro/brcm_patchram_plus1'
+    os.execv(program, [program, '--bd_addr', mac, '--enable_hci', '--no2bytes',
+                      '--use_baudrate_for_download', '--tosleep', '200000',
+                      '--baudrate', '1500000', '--patchram',
+                      '/vendor/etc/firmware/BCM4362A2.hcd', '/dev/ttyS9'])

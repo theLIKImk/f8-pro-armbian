@@ -1,0 +1,53 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=systemsettings
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='KDE system manager for hardware, software, and workspaces'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         plasma-activities
+         kauth
+         kcmutils
+         kcolorscheme
+         kconfig
+         kconfigwidgets
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kio
+         kirigami
+         kitemmodels
+         kitemviews
+         kjobwidgets
+         krunner
+         kservice
+         kwidgetsaddons
+         kwindowsystem
+         kxmlgui
+         libstdc++
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules
+             kdoctools)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('317a21165709d61796fba19f5454397577ffd8aa96655b29dd286a1df252cddb'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

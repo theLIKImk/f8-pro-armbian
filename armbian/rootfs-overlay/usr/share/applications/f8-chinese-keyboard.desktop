@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Chinese Keyboard
+Name[zh_CN]=F8 中文输入与屏幕键盘
+Exec=/usr/bin/python3 -I /usr/libexec/f8-pro/switch-keyboard.py fcitx5
+Icon=input-keyboard
+Categories=Settings;Utility;
+Terminal=false

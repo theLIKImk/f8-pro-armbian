@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=fyi.fortime.Fcitx5Osk.KwinLauncher
+Exec=/usr/bin/fcitx5-osk-kwin-launcher --dbus-server

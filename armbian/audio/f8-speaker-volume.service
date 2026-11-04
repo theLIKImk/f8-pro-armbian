@@ -1,0 +1,16 @@
+[Unit]
+Description=F8 speaker low-volume curve
+After=pipewire-pulse.service wireplumber.service
+Wants=pipewire-pulse.service
+PartOf=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /usr/libexec/f8-pro/speaker-volume-service.py
+Restart=on-failure
+RestartSec=3
+KillMode=mixed
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target

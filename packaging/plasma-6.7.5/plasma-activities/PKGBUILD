@@ -1,0 +1,38 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=plasma-activities
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='Core components for KDE Activities'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kconfig
+         kcoreaddons
+         libstdc++
+         qt6-base)
+makedepends=(extra-cmake-modules
+             qt6-declarative
+             qt6-tools)
+optdepends=('qt6-declarative: QML bindings')
+conflicts=(kactivities)
+replaces=(kactivities)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('d93f31b6f33733ad3803098f4f622e55e3ef52cb5cd97e621a7b803e6f0e3f7c'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -B build  -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

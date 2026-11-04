@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/powerdevil.git",
+  "tag": "6.7.5-2",
+  "commit": "c4a6522b77113c5ce1017408213ac68c64c089d9",
+  "review": "Official CMake/DESTDIR recipe and exact upstream auxiliary patch reviewed. Patch only changes peripheral unknown/nonpositive battery percentage notification handling (chargePercent ==0 becomes <=0); no power policy or system startup hook. Original dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel2.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "3ec33d330d0d95e4fc5a3f6a3b63e4962a3326cf6546223dd4ae350380158c17",
+  "built": false,
+  "auxiliary_sources": {
+    "54f8a4a8.patch": "f92b339712096d623c862e31b58d87ce72f381462efeab30893f1937a6634f88"
+  }
+}

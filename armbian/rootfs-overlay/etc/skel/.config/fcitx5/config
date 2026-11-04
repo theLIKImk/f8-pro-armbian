@@ -1,0 +1,16 @@
+[Hotkey]
+EnumerateWithTriggerKeys=True
+
+[Hotkey/TriggerKeys]
+0=Control+space
+
+[Hotkey/AltTriggerKeys]
+0=Shift_L
+
+[Behavior]
+ActiveByDefault=False
+ShareInputState=No
+PreeditEnabledByDefault=True
+DefaultPageSize=7
+AllowInputMethodForPassword=False
+ShowPreeditForPassword=False

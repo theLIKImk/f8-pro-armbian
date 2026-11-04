@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma5support.git",
+  "tag": "6.7.5-1",
+  "commit": "7c8854dcc294916afbe08b7182066fcca39e6b52",
+  "review": "Official CMake/DESTDIR recipe reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "82c199c0bf0a1017446e6c378c9b020592e20a07bb4b470e1e13d7b245104b00",
+  "built": false
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=F8 sensor compatibility IIO module
+After=f8-motion.service f8-optical.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -I /usr/libexec/f8-pro/sensor-relay-start.py
+RemainAfterExit=yes
+
+[Install]
+WantedBy=f8-desktop.target

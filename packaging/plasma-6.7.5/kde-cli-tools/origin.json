@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kde-cli-tools.git",
+  "tag": "6.7.5-1",
+  "commit": "e5de7e6ce2d7c5114b38cee0c62d7f27abf2d31b",
+  "review": "Official CMake build and DESTDIR packaging reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "ae68512682b87a8bfe09086a45104885207fdba302b9c9118ea97e5f2e79c26f",
+  "built": false
+}

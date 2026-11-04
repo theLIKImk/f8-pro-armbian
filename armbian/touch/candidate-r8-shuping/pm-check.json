@@ -1,0 +1,26 @@
+{
+  "scope": "Extracted PM functions on host pthread locks/fake hardware; no kernel scheduler, real IRQ, display or power test",
+  "candidate_sha256": "d7822db00ca3703a0ae439940b8eff1951dc87253db1476fc82e08f941220661",
+  "ubsan_passed": true,
+  "all_11_slots_released_without_fake_press": true,
+  "filter_state_cleared": true,
+  "display_system_orderings_checked": 2,
+  "resume_failure_stages_retried": 3,
+  "notifier_error_and_identical_event_retry_checked": true,
+  "quiescing_and_stopping_block_worker_irq_enable": true,
+  "concurrent_pm_requests": 4000,
+  "covered": [
+    "ts_irq_disable",
+    "ts_irq_enable",
+    "gsl_release_contacts",
+    "gsl_suspend_locked",
+    "gsl_resume_locked",
+    "gsl_set_suspend_reason",
+    "gsl_ts_pm_suspend",
+    "gsl_ts_pm_resume",
+    "gsl_ts_early_suspend",
+    "gsl_ts_late_resume",
+    "gsl_f8_fb_event"
+  ],
+  "test_output": "PM ordering, release, retry, notifier, IRQ guards and 4000 concurrent requests passed"
+}

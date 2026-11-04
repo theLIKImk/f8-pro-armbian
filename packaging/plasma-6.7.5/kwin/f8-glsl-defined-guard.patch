@@ -1,0 +1,10 @@
+--- a/src/opengl/base.frag
++++ b/src/opengl/base.frag
+@@ -1,6 +1,6 @@
+ #version 140
+ 
+-#if GL_OES_standard_derivatives && TRAIT_ROUNDED_CORNERS && TRAIT_BORDER
++#if defined(GL_OES_standard_derivatives) && TRAIT_ROUNDED_CORNERS && TRAIT_BORDER
+ #extension GL_OES_standard_derivatives : enable
+ #endif
+ 

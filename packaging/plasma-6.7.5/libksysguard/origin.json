@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/libksysguard.git",
+  "tag": "6.7.5-1",
+  "commit": "3c3878dc96b7dae60c73f18009c8c89af9b6f366",
+  "review": "Official CMake/DESTDIR recipe reviewed; no auxiliary source or install hook. Dependencies retained. Upstream CAP_NET_RAW is confined to ksgrd_network_helper.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "85470f48d2a67eb5383455b7516ca064b4e33ec60fda025f6c5572264f7d06f1",
+  "built": false
+}

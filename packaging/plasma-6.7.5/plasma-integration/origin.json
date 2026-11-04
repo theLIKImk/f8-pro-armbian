@@ -1,0 +1,21 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma-integration.git",
+  "tag": "6.7.5-3",
+  "commit": "9b62026b0cc16d930fd0b9a6467dd2765f60a877",
+  "review": "Qt6 platform theme constructor and recipe reviewed; runtime portal dependency retained, private-prefix test until full desktop closure",
+  "changes": [
+    "aarch64",
+    "local pkgrel3.1",
+    "pin signer",
+    "defer Qt5 variant",
+    "declare Qt6Wayland",
+    "opt-in GLES default only for Wayland clients with unspecified format"
+  ],
+  "auxiliary_sources": {
+    "f8-wayland-gles.patch": "4bfd5a646d7fe73174d5389b0a241caad8441befa52132e1c60b8a02bb98f46d"
+  },
+  "recipe_sha256": "46752c8eb203b3b77d020e7180a728e4f5738bfec37225d223327c354d9345e4",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "01903c1c156ec1848cbf8c8ed93493fcdcac1ca052e04ed24176e77aa1f5a26d"
+}

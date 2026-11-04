@@ -1,0 +1,13 @@
+[Unit]
+Description=F8-PRO MPU6500 combined IIO accelerometer and gyroscope (S1)
+After=sddm.service f8-usb-otg.service f8-bluetooth.service
+ConditionPathExists=/sys/firmware/devicetree/base/chosen/f8-motion-trial
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/f8-pro/motion-start.py
+RemainAfterExit=yes
+TimeoutStartSec=30
+
+[Install]
+WantedBy=f8-desktop.target

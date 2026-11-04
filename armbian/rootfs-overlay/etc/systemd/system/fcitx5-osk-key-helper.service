@@ -1,0 +1,11 @@
+[Unit]
+Description=Fcitx5 OSK modifier keys for F8
+After=systemd-modules-load.service dbus.service
+
+[Service]
+ExecStart=/usr/bin/fcitx5-osk-key-helper
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target f8-desktop.target

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Compass Test
+Name[zh_CN]=F8 指南针测试
+Name[zh_TW]=F8 指南針測試
+Exec=/usr/local/bin/f8-compass
+Icon=compass
+Terminal=false
+Categories=Utility;Science;
+StartupNotify=true

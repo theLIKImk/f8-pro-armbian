@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Lunar Calendar Defaults
+Exec=/usr/bin/python3 -I /usr/libexec/f8-pro/calendar-defaults.py
+OnlyShowIn=KDE;
+NoDisplay=true
+X-KDE-autostart-phase=2
+X-KDE-autostart-after=panel

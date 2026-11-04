@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Loader fixups required: zero-sized logo/vendor ranges are original placeholders.
+/ {
+	reserved-memory {
+		#address-cells = <0x02>;
+		#size-cells = <0x02>;
+		ranges;
+
+		cma {
+			compatible = "shared-dma-pool";
+			reusable;
+			size = <0x00 0x800000>;
+			linux,cma-default;
+		};
+
+		f8_drm_logo: drm-logo@00000000 {
+			compatible = "rockchip,drm-logo";
+			reg = <0x00 0x00 0x00 0x00>;
+		};
+
+		drm-cubic-lut@00000000 {
+			compatible = "rockchip,drm-cubic-lut";
+			reg = <0x00 0x00 0x00 0x00>;
+		};
+
+		f8_vendor_storage_mem: vendor-storage-rm@00000000 {
+			compatible = "rockchip,vendor-storage-rm";
+			reg = <0x00 0x00 0x00 0x00>;
+		};
+
+		ramoops@110000 {
+			compatible = "ramoops";
+			reg = <0x00 0x110000 0x00 0xf0000>;
+			boot-log-size = <0x8000>;
+			boot-log-count = <0x01>;
+			console-size = <0x80000>;
+			pmsg-size = <0x50000>;
+			ftrace-size = <0x00>;
+			record-size = <0x20000>;
+		};
+
+		minidump-smem@1f0000 {
+			reg = <0x00 0x1f0000 0x00 0x100>;
+			no-map;
+			status = "disabled";
+		};
+
+		minidump-mem@c000000 {
+			reg = <0x00 0xc000000 0x00 0x2000000>;
+			no-map;
+			status = "disabled";
+		};
+	};
+ vendor-storage { compatible = "rockchip,ram-vendor-storage"; memory-region = <&f8_vendor_storage_mem>; status = "disabled"; };
+};
+&display_subsystem { memory-region = <&f8_drm_logo>; memory-region-names = "drm-logo"; };

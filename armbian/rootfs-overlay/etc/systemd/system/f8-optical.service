@@ -1,0 +1,12 @@
+[Unit]
+Description=F8 EM30918 ambient light and low-current proximity
+After=f8-motion.service
+ConditionPathExists=/sys/bus/i2c/devices/3-0068/name
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 -I /usr/libexec/f8-pro/optical-start.py
+RemainAfterExit=yes
+
+[Install]
+WantedBy=f8-desktop.target

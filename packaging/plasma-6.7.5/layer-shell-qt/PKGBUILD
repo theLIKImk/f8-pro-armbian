@@ -1,0 +1,33 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=layer-shell-qt
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=3.1
+pkgdesc='Qt component to allow applications to make use of the Wayland wl-layer-shell protocol'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(GPL-2.0-or-later LGPL-2.0-or-later)
+depends=(glibc
+         qt6-base
+         qt6-wayland
+         libstdc++
+         wayland)
+makedepends=(extra-cmake-modules
+             qt6-declarative
+             wayland-protocols)
+optdepends=('qt6-declarative: QML bindings')
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('ccdcfec7081ca956f7a52c9113a4df3a226575bfbe98b56a2a9a4d7d7e19e8f0'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -B build  -S $pkgname-$pkgver -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

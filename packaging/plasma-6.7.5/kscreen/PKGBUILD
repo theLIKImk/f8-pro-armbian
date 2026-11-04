@@ -1,0 +1,53 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kscreen
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='KDE screen management software'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcmutils
+         kconfig
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         ki18n
+         kimageformats
+         kirigami
+         kitemmodels
+         ksvg
+         kwindowsystem
+         layer-shell-qt
+         libkscreen
+         libstdc++
+         libx11
+         libxcb
+         libxi
+         libplasma
+         plasma5support
+         qt6-base
+         qt6-declarative
+         wayland)
+makedepends=(extra-cmake-modules
+             wayland-protocols)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('a1742210a0cf4ea76959f708c55180b2573648e9cd35cb4e38f349fe5694c9df'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma-workspace.git",
+  "tag": "6.7.5-3",
+  "commit": "3d16ebba638c410746e55d31d43e1287382b2199",
+  "review": "Official CMake/DESTDIR recipe reviewed; no auxiliary source or install hook. Preserve upstream runtime-only integration dependency and both split package definitions. X11 session is data only and will not be installed until kwin-x11 is ready.",
+  "changes": [
+    "aarch64",
+    "local pkgrel suffix .1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "c1f1faa0adb488f52c109336083aa4440d286ed99dc571b36bc3658bc8c2c438",
+  "built": false,
+  "data_packages": [
+    "plasma-x11-session"
+  ]
+}

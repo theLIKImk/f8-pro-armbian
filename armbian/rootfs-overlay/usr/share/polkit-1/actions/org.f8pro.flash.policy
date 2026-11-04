@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+ <vendor>F8-PRO</vendor>
+ <action id="org.f8pro.flash.control">
+  <description>Control the F8 flash LED</description>
+  <description xml:lang="zh_CN">控制 F8 闪光灯</description>
+  <message>Administrator authentication is required to test the flash LED.</message>
+  <message xml:lang="zh_CN">测试闪光灯需要管理员验证。</message>
+  <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin_keep</allow_active></defaults>
+  <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/f8-pro/flash-control.py</annotate>
+ </action>
+</policyconfig>

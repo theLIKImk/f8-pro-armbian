@@ -1,0 +1,14 @@
+[Unit]
+Description=Initialize an individual Arch Linux ARM package trust database
+After=systemd-random-seed.service
+ConditionPathExists=!/var/lib/f8-pro/keyring-ready
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pacman-key --init
+ExecStart=/usr/bin/pacman-key --populate archlinuxarm archlinux
+ExecStart=/usr/bin/install -D -m 0600 /dev/null /var/lib/f8-pro/keyring-ready
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

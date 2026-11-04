@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma-activities.git",
+  "tag": "6.7.5-1",
+  "commit": "c6a022e3b4c42b26957a1a11e048a7a3cfb5c01f",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD build/package only invoke cmake and DESTDIR install; source CMake dependencies inspected",
+  "changes": [
+    "arch aarch64",
+    "pkgrel 1.1 distinguishes local build",
+    "restrict source signer to verified release primary key"
+  ],
+  "recipe_sha256": "8589a521ce56d9cde642597c17ff5cd9be0d5504fc62fe3303d80d841b1e1cee",
+  "built": true,
+  "package_sha256": "52af4634ba9f567b21a6b805cd9c90168d181cc4cb26aa376b848a11709d14eb"
+}

@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Isolated first-kernel diagnostic candidate, not a desktop or approved flash image.
+#include "f8-pro-compile-check.dts"
+/ {
+	model = "F8-PRO 6.1 firstboot diagnostic candidate";
+	compatible = "f8-pro,firstboot-diagnostic", "rockchip,rk3588s-tablet-f12-v11", "rockchip,rk3588";
+	chosen {
+		bootargs = "earlycon=uart8250,mmio32,0xfeb50000 console=ttyFIQ0 irqchip.gicv3_pseudo_nmi=0 rdinit=/init loglevel=8 ignore_loglevel panic=0 maxcpus=1 cpufreq.off=1 systemd.gpt_auto=0";
+	};
+};
+// USB2-only device mode for the existing physical USB0 diagnostic connection.
+// Do not enable USB3/DP alternate mode, role-switch, TCPC or charger policy here.
+&usbdrd3_0 { status = "okay"; };
+&usbdrd_dwc3_0 {
+	status = "okay";
+	dr_mode = "peripheral";
+	maximum-speed = "high-speed";
+	phys = <&u2phy0_otg>;
+	phy-names = "usb2-phy";
+	/delete-property/ usb-role-switch;
+	/delete-property/ quirk-skip-phy-init;
+};
+&u2phy0 { status = "okay"; };
+&u2phy0_otg { status = "okay"; };
+&f8_mpu_acc { status = "disabled"; };
+&f8_compass { status = "disabled"; };

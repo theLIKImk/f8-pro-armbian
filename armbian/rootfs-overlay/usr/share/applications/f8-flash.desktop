@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Flash
+Name[zh_CN]=F8 闪光灯
+Comment=Rear flash brightness, steady light and blinking
+Exec=/usr/bin/python3 /usr/libexec/f8-pro/flash-panel.py
+Icon=camera-flash
+Terminal=false
+Categories=Utility;HardwareSettings;

@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Vendor audio routes retained, pending real playback/capture and power tests.
+/ {
+	f8_sound: es8388-sound {
+		status = "disabled";
+		compatible = "rockchip,multicodecs-card", "everest,es8323";
+		rockchip,card-name = "rockchip,es8388-codec";
+		poll-interval = <0x64>;
+		rockchip,format = "i2s";
+		rockchip,mclk-fs = <0x100>;
+		rockchip,cpu = <&i2s0_8ch>;
+		rockchip,codec = <&f8_codec>;
+		spk-con-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
+		spk-volume = <0x14>;
+		spk-volume-l = <0x14>;
+		spk-volume-r = <0x14>;
+		use-ext-amplifier;
+		hp-volume = <0x14>;
+		out-l2spk-r2hp;
+		rockchip,audio-routing = "Headphone", "LOUT1", "Headphone", "ROUT1", "Speaker", "LOUT2", "Speaker", "ROUT2", "Headphone", "Headphone Power", "Headphone", "Headphone Power", "Speaker", "Speaker Power", "Speaker", "Speaker Power", "LINPUT1", "Main Mic", "LINPUT2", "Main Mic", "RINPUT1", "Headset Mic", "RINPUT2", "Headset Mic";
+		pinctrl-names = "default";
+		pinctrl-0 = <&f8_voice_en>;
+	};
+
+};
+&pinctrl {
+ f8-audio {
+  f8_voice_en: voice-en { rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>; };
+ };
+};
+&i2s0_8ch { status = "disabled"; };

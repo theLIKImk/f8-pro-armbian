@@ -1,0 +1,3 @@
+# KDE calendar extension and scripting client used by the per-user default setup.
+plasma-calendar-addons
+qdbus-qt6

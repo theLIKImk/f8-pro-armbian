@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// R3: SMP bring-up without vendor DVFS calibration, and a real serial console.
+#include "f8-pro-secondboot-diagnostic.dts"
+/ {
+	model = "F8-PRO 6.1 SMP readonly-userspace diagnostic R3";
+	chosen {
+		stdout-path = "serial2:1500000n8";
+		bootargs = "earlycon=uart8250,mmio32,0xfeb50000 console=ttyS2,1500000n8 irqchip.gicv3_pseudo_nmi=0 rdinit=/init loglevel=8 ignore_loglevel panic=0 cpufreq.off=1 initcall_blacklist=rockchip_cpufreq_driver_init systemd.gpt_auto=0";
+	};
+};
+&uart2 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart2m0_xfer>;
+};

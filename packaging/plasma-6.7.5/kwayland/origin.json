@@ -1,0 +1,16 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kwayland.git",
+  "tag": "6.7.5-1",
+  "commit": "c4917c942ba8dfd0ed171754426c3cb1ccacc398",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD only cmake build and DESTDIR install; top-level source CMake inspected",
+  "changes": [
+    "arch aarch64",
+    "local pkgrel .1",
+    "pin verified release signer",
+    "declare qt6-wayland required by source"
+  ],
+  "recipe_sha256": "d4065cd82004982a18df435848a6a7d0f45c6547a17de1834068a8557f2d698b",
+  "built": true,
+  "package_sha256": "5e92d0c8784bc1a6b9add176a0ad4c1d0eac8522cc0d56b1f5ffe3934579605e"
+}

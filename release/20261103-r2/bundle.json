@@ -1,0 +1,7 @@
+{
+  "archive": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip",
+  "bytes": 5051101732,
+  "sha256": "b6a2acc525a31a12df98a00c1d9364f60d29a9a1de02080bb8bfe9bef20212a8",
+  "zip_crc_check_passed": true,
+  "manifest": "manifest.json"
+}

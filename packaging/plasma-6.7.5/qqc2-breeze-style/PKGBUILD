@@ -1,0 +1,35 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=qqc2-breeze-style
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='Applications useful for Plasma development'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcolorscheme
+         kconfig
+         kguiaddons
+         kiconthemes
+         kirigami
+         libstdc++
+         qt6-base
+         qt6-declarative)
+makedepends=(extra-cmake-modules)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('788f0698c904112cc33bf6f8fb446b2e4fd7231d38c0955cbc3baa50d375d1ee'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -B build -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

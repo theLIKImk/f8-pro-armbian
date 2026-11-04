@@ -1,0 +1,29 @@
+--- a/qt6/src/platformtheme/kdeplatformtheme.cpp
++++ b/qt6/src/platformtheme/kdeplatformtheme.cpp
+@@ -20,6 +20,7 @@
+ #include "x11integration.h"
+ 
+ #include <QApplication>
++#include <QSurfaceFormat>
+ #include <QDBusConnection>
+ #include <QDBusConnectionInterface>
+ #include <QDebug>
+@@ -49,6 +50,18 @@
+ 
+ KdePlatformTheme::KdePlatformTheme()
+ {
++    // Opt-in board configuration; preserve explicit application requests.
++    if (qEnvironmentVariableIntValue("F8_PRO_WAYLAND_GLES") == 1
++        && QGuiApplication::platformName() == QLatin1String("wayland")) {
++        auto format = QSurfaceFormat::defaultFormat();
++        qInfo("F8_PLATFORM_THEME original format=%d", int(format.renderableType()));
++        if (format.renderableType() == QSurfaceFormat::DefaultRenderableType) {
++            format.setRenderableType(QSurfaceFormat::OpenGLES);
++            format.setVersion(2, 0);
++            QSurfaceFormat::setDefaultFormat(format);
++            qInfo("F8_PLATFORM_THEME selected OpenGLES default");
++        }
++    }
+     loadSettings();
+ 
+     // explicitly not KWindowSystem::isPlatformWayland to not include the kwin process

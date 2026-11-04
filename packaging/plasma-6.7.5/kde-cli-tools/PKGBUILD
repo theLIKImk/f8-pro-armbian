@@ -1,0 +1,48 @@
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+pkgname=kde-cli-tools
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='Tools based on KDE Frameworks to better interact with the system'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcmutils
+         kcompletion
+         kconfig
+         kcoreaddons
+         kdesu
+         ki18n
+         kiconthemes
+         kio
+         kparts
+         kservice
+         kwidgetsaddons
+         kwindowsystem
+         libstdc++
+         qt6-base
+         qt6-svg
+         sh)
+makedepends=(extra-cmake-modules
+             kdoctools)
+optdepends=('kinfocenter: for kinfo')
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('18f3c421b305003caf73f9e9fbec09fbf30f472dbe81fec328046cca7883a31d'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

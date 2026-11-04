@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma-activities-stats.git",
+  "tag": "6.7.5-1",
+  "commit": "71eb161fd99e7e1ed091b7c31f8f078413becfc1",
+  "review": "Official CMake build and DESTDIR packaging reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer"
+  ],
+  "recipe_sha256": "16127e7f15e74d631ac8f5cd400e3af80e49228ef63c0f7aae5a83f31877cb71",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "0be10f1278f77cde1679bac887ccf78ca5cf0eb5d6d9bd7f1de2835aa234c4e0"
+}

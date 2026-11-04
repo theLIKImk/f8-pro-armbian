@@ -1,0 +1,10 @@
+# F8-PRO candidate additions, based on source audit 2026-10-28.
+# Merged/resolved in the isolated evaluation build; not hardware-tested.
+# The generic Armbian config lists CW2017, not this tablet's CW2015.
+CONFIG_BATTERY_CW2015=m
+CONFIG_CHARGER_BQ25890=m
+# Candidate read-only trial root requires these before module loading.
+CONFIG_MMC_BLOCK=y
+CONFIG_EFI_PARTITION=y
+CONFIG_SQUASHFS=y
+CONFIG_OVERLAY_FS=y

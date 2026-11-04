@@ -1,0 +1,17 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/layer-shell-qt.git",
+  "tag": "6.7.5-3",
+  "commit": "bc63fb6b8a8ce085a3267e01e90729417e00b4d8",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD only cmake build and DESTDIR install; top-level source CMake inspected",
+  "changes": [
+    "arch aarch64",
+    "local pkgrel .1",
+    "pin verified release signer",
+    "disable tests",
+    "declare qt6-wayland required by source"
+  ],
+  "recipe_sha256": "7ae07ea83da35139f6b0e02dbc8798cc00ef93958d56ff576d1776afdd372750",
+  "built": true,
+  "package_sha256": "883f520d2a5487529cfb3c2d03a7dfb06743cb54f3da6a56ff51e1bd6ecc4910"
+}

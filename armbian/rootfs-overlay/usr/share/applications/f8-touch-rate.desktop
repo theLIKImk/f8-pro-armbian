@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Touch Rate
+Name[zh_CN]=F8 触摸采样率
+Comment=Adjust the global touchscreen target between 60 and 120 Hz
+Exec=/usr/bin/python3 /usr/libexec/f8-pro/touch-rate-panel/panel.py
+Icon=input-touchscreen
+Terminal=false
+Categories=Settings;HardwareSettings;

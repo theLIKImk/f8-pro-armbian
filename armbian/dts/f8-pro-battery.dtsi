@@ -1,0 +1,53 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Vendor parameters as evidence. Do not enable until charger policy is adapted.
+&i2c6 {
+	f8_battery: cw2015@62 {
+		compatible = "cellwise,cw2015";
+		reg = <0x62>;
+		cellwise,battery-profile = <
+			0x180a9383 0x6d5b5a62 0x676b595d 0x5a5f4f3c
+			0x210f0c17 0x53857d73 0x73690a3e 0x1931505b
+			0x5c59534d 0x3b1e7112 0x04213b6c 0x8a929336
+			0x5a84979f 0x8061adcb 0x2f0064a5 0xb51cf011
+		>;
+		cellwise,monitor-interval-ms = <2000>;
+		power-supplies = <&f8_charger>;
+		status = "disabled";
+	};
+	f8_charger: charger@6a {
+		compatible = "ti,bq25890";
+		reg = <0x6a>;
+		extcon = <&u2phy0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&f8_charger_irq_pin>;
+		// Vendor pinctrl is GPIO0_D5 but IRQ is GPIO3_D5. Not resolved yet.
+		interrupt-parent = <&gpio3>;
+		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
+		otg-mode-en-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
+		// Original ti,usb-charger-detection -> FUSB302 still needs its graph.
+		// The following vendor limits are NOT all parsed by the target driver.
+		ti,max-input-voltage = <20000000>;
+		ti,max-input-current = <3000000>;
+		ti,max-charge-voltage = <4200000>;
+		ti,input-current = <500000>;
+		ti,input-current-sdp = <500000>;
+		ti,input-current-dcp = <3000000>;
+		ti,input-current-cdp = <1500000>;
+		ti,battery-regulation-voltage = <4400000>;
+		ti,charge-current = <2500000>;
+		ti,termination-current = <86000>;
+		ti,precharge-current = <150000>;
+		ti,minimum-sys-voltage = <3000000>;
+		ti,boost-voltage = <5000000>;
+		ti,boost-max-current = <1800000>;
+		status = "disabled";
+		// Vendor OTG regulator subtree is not copied as a usable target binding.
+	};
+};
+&pinctrl {
+	charger {
+		f8_charger_irq_pin: charger_ok {
+			rockchip,pins = <0 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
+		};
+	};
+};

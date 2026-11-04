@@ -1,0 +1,4 @@
+# Candidate system defaults; stage only after package/runtime validation.
+[Wayland]
+InputMethod=/usr/share/applications/com.github.maliit.keyboard.desktop
+VirtualKeyboardEnabled=true

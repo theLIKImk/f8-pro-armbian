@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/ksystemstats.git",
+  "tag": "6.7.5-1",
+  "commit": "736be06ca42d646aba95e09f0a07e6c2c3c83f0f",
+  "review": "Official CMake/DESTDIR recipe reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "40ba9b8f02dd82c00a33922802bf6bf1fb757de26b7c298816ac401e5135dbcc",
+  "built": false
+}

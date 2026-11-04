@@ -1,0 +1,22 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/breeze.git",
+  "tag": "6.7.5-1",
+  "commit": "947d5f7d5fdcaa7635ef808dd4e43a9a24279663",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD and signed CMake reviewed; retain Qt6 and separate cursors, defer Qt5 variant",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin signer",
+    "omit only Qt5 split package/build/makedepends; preserve Qt6 BUILD_QT5=OFF and cursor split"
+  ],
+  "data_packages": [
+    "breeze-cursors"
+  ],
+  "recipe_sha256": "995a03417b4875deb443621c346f17171eb1706b597269c7967464871ffbc803",
+  "built": true,
+  "additional_package_sha256": {
+    "breeze-cursors": "a62447b95e5b6ebec899c63a54dc1207d8a48188cba2348903816e35a38ac52b"
+  },
+  "package_sha256": "9a8a8d2da78732d11ba54b8dc15e94ae1461353abbf742d4714c93af6afb5b15"
+}

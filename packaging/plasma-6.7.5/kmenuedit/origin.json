@@ -1,0 +1,14 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kmenuedit.git",
+  "tag": "6.7.5-1",
+  "commit": "7d6c68579d127eedc7fe96f3ca7a70311423cea1",
+  "review": "Official CMake/DESTDIR recipe reviewed; no auxiliary source or install hook. Dependencies retained.",
+  "changes": [
+    "aarch64",
+    "local pkgrel suffix .1",
+    "pin verified release signer",
+    "Limit Qt MOC/AUTOGEN workers to 1 independently of main build jobs"
+  ],
+  "recipe_sha256": "2bfc3754d3bf5ba0eb65de2b12ba4acaea84b4cab797300465797582839aac35",
+  "built": false
+}

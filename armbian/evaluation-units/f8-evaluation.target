@@ -1,0 +1,6 @@
+[Unit]
+Description=F8-PRO RAM-only basic userspace evaluation
+Requires=basic.target
+After=basic.target
+Wants=f8-evaluation-report.timer
+AllowIsolate=yes

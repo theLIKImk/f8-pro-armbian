@@ -1,0 +1,19 @@
+{
+  "sha256": "e5d684e20f6590583c23ad219d31c9dd964251c6fd5c7b1244cdc8996e092b4d",
+  "srcversion": "BAA03043AD81E9FC8376E86",
+  "vermagic": "6.1.115-vendor-rk35xx SMP mod_unload modversions aarch64",
+  "all_import_crcs_verified_against_actual_image": true,
+  "imports": {
+    "i2c_register_driver": 3447825003,
+    "mutex_lock": 1308265803,
+    "i2c_smbus_write_byte_data": 1239473700,
+    "mutex_unlock": 840167480,
+    "i2c_smbus_read_byte_data": 3247761593,
+    "devm_iio_device_alloc": 2829266572,
+    "__mutex_init": 3472559263,
+    "__devm_iio_device_register": 1688576991,
+    "sysfs_emit": 3884180065,
+    "i2c_del_driver": 4104521273,
+    "module_layout": 619664432
+  }
+}

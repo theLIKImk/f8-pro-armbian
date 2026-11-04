@@ -1,0 +1,142 @@
+// F8-PRO diagnostic adapter for the observed legacy Mali RGB buffer requests.
+// Nonzero opaque parameters and non-RGB formats are intentionally unsupported.
+class F8MaliBufferSharing : public QObject
+{
+public:
+    F8MaliBufferSharing(LinuxDmaBufV1ClientBufferIntegrationPrivate *state, Display *display)
+        : QObject(state->q)
+        , m_state(state)
+    {
+        m_watch.owner = this;
+        m_watch.listener.notify = displayDestroyed;
+        wl_display_add_destroy_listener(*display, &m_watch.listener);
+        m_listening = true;
+        m_global = wl_global_create(*display, &protocol, 5, this, bind);
+        qCInfo(KWIN_CORE) << "F8_MALI_SHARING global=" << bool(m_global);
+    }
+
+    ~F8MaliBufferSharing() override
+    {
+        while (!m_resources.isEmpty()) {
+            wl_resource_destroy(*m_resources.constBegin());
+        }
+        if (m_listening) {
+            wl_list_remove(&m_watch.listener.link);
+        }
+        if (m_global) {
+            wl_global_destroy(m_global);
+        }
+    }
+
+private:
+    struct DisplayWatch {
+        wl_listener listener{};
+        F8MaliBufferSharing *owner = nullptr;
+    };
+
+    static void displayDestroyed(wl_listener *listener, void *)
+    {
+        auto watch = reinterpret_cast<DisplayWatch *>(listener);
+        watch->owner->m_global = nullptr; // wl_display destroys the global itself.
+        watch->owner->m_listening = false;
+        wl_list_remove(&listener->link);
+    }
+
+    static void resourceDestroyed(wl_resource *resource)
+    {
+        auto self = static_cast<F8MaliBufferSharing *>(wl_resource_get_user_data(resource));
+        self->m_resources.remove(resource);
+    }
+
+    static void bind(wl_client *client, void *data, uint32_t version, uint32_t id)
+    {
+        auto self = static_cast<F8MaliBufferSharing *>(data);
+        wl_resource *resource = wl_resource_create(client, &protocol, std::min(version, 5u), id);
+        if (!resource) {
+            wl_client_post_no_memory(client);
+            return;
+        }
+        self->m_resources.insert(resource);
+        wl_resource_set_implementation(resource, &implementation, self, resourceDestroyed);
+        // This is the exact device event observed from the factory driver on Weston.
+        wl_resource_post_event(resource, 0, "dummy-busid");
+    }
+
+    static void authenticate(wl_client *, wl_resource *resource, uint32_t)
+    {
+        // This adapter accepts dma-buf FDs, never grants DRM authentication.
+        wl_resource_post_error(resource, 0, "F8 Mali adapter does not support DRM authentication");
+    }
+
+    static void createBuffer(wl_client *client, wl_resource *resource, uint32_t id,
+                             int32_t width, int32_t height, uint32_t stride,
+                             uint32_t format, uint32_t opaque0, uint32_t opaque1, int fd)
+    {
+        FileDescriptor descriptor(fd); // Own and close the received FD on every failure path.
+        auto self = static_cast<F8MaliBufferSharing *>(wl_resource_get_user_data(resource));
+        if (!descriptor || width <= 0 || height <= 0 || width > 8192 || height > 8192
+            || stride < uint32_t(width) * 4 || stride % 4 != 0
+            || uint64_t(stride) * uint32_t(height) > uint64_t(256) * 1024 * 1024
+            || opaque0 != 0 || opaque1 != 0
+            || format != DRM_FORMAT_ABGR8888) {
+            wl_resource_post_error(resource, 0, "F8 Mali adapter only supports bounded RGB requests with zero opaque parameters");
+            return;
+        }
+        if (!self->m_state->renderBackend) {
+            wl_resource_post_error(resource, 0, "F8 Mali adapter has no render backend");
+            return;
+        }
+        DmaBufAttributes attributes;
+        attributes.planeCount = 1;
+        attributes.width = width;
+        attributes.height = height;
+        attributes.format = format;
+        // Experimental scope: only the observed zero-parameter RGB request.
+        // Import and physical display tests must verify this linear interpretation.
+        attributes.modifier = DRM_FORMAT_MOD_LINEAR;
+        attributes.device = self->m_state->currentMainDevice;
+        attributes.fd[0] = std::move(descriptor);
+        attributes.offset[0] = 0;
+        attributes.pitch[0] = stride;
+        auto buffer = new LinuxDmaBufV1ClientBuffer(std::move(attributes));
+        if (!self->m_state->renderBackend->testImportBuffer(buffer)) {
+            buffer->drop();
+            wl_resource_post_error(resource, 0, "F8 Mali RGB dma-buf import failed");
+            return;
+        }
+        wl_resource *bufferResource = wl_resource_create(client, &wl_buffer_interface, 1, id);
+        if (!bufferResource) {
+            buffer->drop();
+            wl_resource_post_no_memory(resource);
+            return;
+        }
+        buffer->initialize(bufferResource);
+        qCInfo(KWIN_CORE) << "F8_MALI_BUFFER import=1 size=" << QSize(width, height)
+                         << "stride=" << stride << "format=" << Qt::hex << format;
+    }
+
+    struct Implementation {
+        decltype(&createBuffer) create_buffer;
+        decltype(&authenticate) auth;
+    };
+    static const wl_interface *bufferTypes[8];
+    static const wl_message requests[2];
+    static const wl_message events[1];
+    static const wl_interface protocol;
+    static const Implementation implementation;
+
+    LinuxDmaBufV1ClientBufferIntegrationPrivate *m_state;
+    wl_global *m_global = nullptr;
+    QSet<wl_resource *> m_resources;
+    DisplayWatch m_watch;
+    bool m_listening = false;
+};
+
+const wl_interface *F8MaliBufferSharing::bufferTypes[8] = {&wl_buffer_interface, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
+const wl_message F8MaliBufferSharing::requests[2] = {
+    {"create_buffer", "niiuuuuh", bufferTypes},
+    {"auth", "u", nullptr},
+};
+const wl_message F8MaliBufferSharing::events[1] = {{"alloc_device", "s", nullptr}};
+const wl_interface F8MaliBufferSharing::protocol = {"mali_buffer_sharing", 5, 2, requests, 1, events};
+const F8MaliBufferSharing::Implementation F8MaliBufferSharing::implementation = {createBuffer, authenticate};

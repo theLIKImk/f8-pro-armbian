@@ -1,0 +1,27 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=ocean-sound-theme
+pkgdesc='Ocean Sound Theme for Plasma'
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+arch=(any)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=()
+makedepends=(extra-cmake-modules
+             qt6-base)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('452e5ab04f5e2d7cbf9357e4e12badf8493aefda437ba130eb38c9e511313b72'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build -S $pkgname-$pkgver
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

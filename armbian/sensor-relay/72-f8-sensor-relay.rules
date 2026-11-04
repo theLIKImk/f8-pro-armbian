@@ -1,0 +1,2 @@
+SUBSYSTEM=="misc", KERNEL=="f8-sensor-feed", TAG+="uaccess", MODE="0660"
+SUBSYSTEM=="iio", ATTR{name}=="f8-sensor-relay", TAG+="uaccess"

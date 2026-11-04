@@ -1,0 +1,17 @@
+[Unit]
+Description=F8-PRO factory PCIe Wi-Fi module
+After=systemd-udevd.service
+Before=NetworkManager.service
+ConditionPathExists=/usr/lib/modules/5.10.160/updates/bcmdhd_pcie.ko
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/modprobe bcmdhd_pcie
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

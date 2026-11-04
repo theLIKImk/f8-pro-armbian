@@ -1,0 +1,35 @@
+{
+  "scope": "Full F8 driver+algorithm module link and actual official import CRC checks; not loaded",
+  "module": "f8_gsl_shuping.ko",
+  "bytes": 91680,
+  "sha256": "bb8fd9db0bf16972e6760ca9d8ba8489e91a516c31269fc770346fe75d7a505d",
+  "target_official_image_version": "26.8.1",
+  "build_headers_package_version": "26.8.3",
+  "headers_not_claimed_exact_image_build": true,
+  "vermagic": "6.1.115-vendor-rk35xx SMP mod_unload modversions aarch64",
+  "imported_symbol_count": 48,
+  "all_import_crcs_match_actual_official_modules": true,
+  "kernel_module_layout_crc_matches": true,
+  "linked_board_arrays": [
+    {
+      "name": "f8_pro_r8_shuping_fw",
+      "bytes": 38808,
+      "sha256": "60a271f6b8ba14e12d8b46c89892b31df8dbbe3c6037cba829fa2af378206809"
+    },
+    {
+      "name": "f8_pro_r8_shuping_algorithm",
+      "bytes": 2048,
+      "sha256": "032de666c5e0ec4c8e6b8eacfd7a27559cb702071c08e4e0b1e128b287e643b8"
+    }
+  ],
+  "unique_i2c_driver_name": "f8-gsl-shuping",
+  "of_match": "f8-pro,gslx680-shuping-eval",
+  "algorithm_linked_privately": true,
+  "algorithm_source_sha256": "72ccf0b5e4a81e93e11c218104644dcd9dd0e80fa51fda2d0c7f83500d668915",
+  "hardware_loaded": false,
+  "controller_written": false,
+  "remaining": [
+    "Algorithm identity/version review",
+    "IRQ/reset/coordinate hardware trial"
+  ]
+}

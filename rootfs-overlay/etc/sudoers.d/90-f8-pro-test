@@ -1,0 +1,2 @@
+# Diagnostic image only. Remove when the first-boot account wizard is installed.
+alarm ALL=(ALL:ALL) NOPASSWD: ALL

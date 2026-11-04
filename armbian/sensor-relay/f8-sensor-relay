@@ -1,0 +1,3 @@
+#!/bin/sh
+systemctl --user start f8-sensor-relay.service
+exec /usr/bin/python3 /usr/local/lib/f8-pro/sensor-relay-panel.py

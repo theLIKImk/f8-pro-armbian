@@ -1,0 +1,7 @@
+[Unit]
+Description=Capture F8-PRO userspace after target activation
+
+[Timer]
+OnActiveSec=15s
+AccuracySec=1s
+Unit=f8-evaluation-report.service

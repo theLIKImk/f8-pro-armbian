@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for completed F8 first-run setup
+
+[Timer]
+OnBootSec=90s
+OnUnitActiveSec=60s
+Unit=f8-setup-cleanup.service
+
+[Install]
+WantedBy=f8-desktop.target

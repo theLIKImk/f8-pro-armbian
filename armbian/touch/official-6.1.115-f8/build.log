@@ -1,0 +1,8 @@
+  CC [M]  /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_driver.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/gsl_point_id.o
+  LD [M]  /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.o
+  MODPOST /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/Module.symvers
+  CC [M]  /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.mod.o
+  LD [M]  /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.ko
+  BTF [M] /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.ko
+Skipping BTF generation for /var/tmp/f8-pro-armbian/f8-official-touch-module-v1/f8_gsl_shuping.ko due to unavailability of vmlinux

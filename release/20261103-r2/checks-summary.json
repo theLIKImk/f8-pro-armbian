@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "date": "2026-11-03",
+  "archive": {
+    "archive": "F8_ARMBIAN_20261103_R2_BOOT_ROOTFS.zip",
+    "bytes": 5051101732,
+    "sha256": "b6a2acc525a31a12df98a00c1d9364f60d29a9a1de02080bb8bfe9bef20212a8",
+    "zip_crc_check_passed": true,
+    "manifest": "manifest.json"
+  },
+  "rootfs_GiB": 16,
+  "boot_MiB": 64,
+  "readback_files": 87,
+  "privacy": {
+    "wifi_profiles_empty": true,
+    "wireless_psk_scan_clean": true,
+    "ssh_host_keys_absent": true,
+    "ssh_user_keys_and_known_hosts_absent": true,
+    "ssh_opt_in": true,
+    "all_shadow_hashes_locked": true,
+    "only_setup_user": true,
+    "personal_homes_absent": true,
+    "private_key_scan_clean": true,
+    "cloudpinyin_default_enabled": true
+  },
+  "cloudpinyin_installed_live": true,
+  "cloudpinyin_version": "5.1.12-1",
+  "cloudpinyin_backend": "Baidu",
+  "cloudpinyin_config_and_https_test_passed": true,
+  "emulated_wizard_pages": 6,
+  "native_wizard_pages": 6,
+  "image_wizard_matches_native_test": true,
+  "privilege_modes": {
+    "actual_image_modes": {
+      "/usr/bin/sudo": {
+        "resolved_path": "/usr/bin/sudo.ws",
+        "mode": "0o4755",
+        "uid": 0,
+        "gid": 0
+      },
+      "/usr/lib/polkit-1/polkit-agent-helper-1": {
+        "resolved_path": "/usr/lib/polkit-1/polkit-agent-helper-1",
+        "mode": "0o4755",
+        "uid": 0,
+        "gid": 0
+      },
+      "/usr/local/lib/f8-pro/first-run-apply.py": {
+        "resolved_path": "/usr/local/lib/f8-pro/first-run-apply.py",
+        "mode": "0o755",
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "sudoers_syntax_passed": true
+  },
+  "cold_boot_tested": false,
+  "device_flashed": false,
+  "live_wifi_and_ssh_preserved": true
+}

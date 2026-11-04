@@ -1,0 +1,19 @@
+[Unit]
+Description=F8-PRO Bluetooth firmware and UART attachment
+Requires=dev-ttyS9.device
+After=dev-ttyS9.device systemd-machine-id-commit.service
+Before=bluetooth.service
+ConditionPathExists=/vendor/etc/firmware/BCM4362A2.hcd
+ConditionPathExists=/usr/libexec/f8-pro/brcm_patchram_plus1
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStartPre=rfkill unblock bluetooth
+ExecStart=/usr/libexec/f8-pro/bluetooth-init
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

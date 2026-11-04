@@ -1,0 +1,2 @@
+# Keep original MPU6500 as KDE orientation source; relay already uses board axes.
+SUBSYSTEM=="iio", ATTR{name}=="f8-sensor-relay", ENV{IIO_SENSOR_PROXY_TYPE}=""

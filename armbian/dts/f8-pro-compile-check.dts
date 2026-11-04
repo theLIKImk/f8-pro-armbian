@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// COMPILE CHECK ONLY. Missing board power, boot, memory and peripheral integration.
+/dts-v1/;
+#include "rk3588s.dtsi"
+#include "f8-pro-peripherals.dtsi"
+#include "f8-pro-power.dtsi"
+#include "f8-pro-display.dtsi"
+#include "f8-pro-display-route.dtsi"
+#include "f8-pro-vop.dtsi"
+#include "f8-pro-pmic-pins.dtsi"
+#include "f8-pro-storage.dtsi"
+#include "f8-pro-compute-power.dtsi"
+#include "f8-pro-reserved-memory.dtsi"
+#include "f8-pro-monitoring.dtsi"
+#include "f8-pro-audio.dtsi"
+#include "f8-pro-wireless.dtsi"
+#include "f8-pro-battery.dtsi"
+/ {
+	model = "F8-PRO peripheral compile check - DO NOT FLASH";
+	compatible = "f8-pro,compile-check", "rockchip,rk3588s";
+};

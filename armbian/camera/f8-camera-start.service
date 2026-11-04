@@ -1,0 +1,16 @@
+[Unit]
+Description=F8-PRO C2 camera cold-start completion
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service f8-live-prepare.service
+Before=sddm.service
+ConditionPathExists=/sys/firmware/devicetree/base/chosen/f8-camera-trial
+
+[Service]
+Type=oneshot
+ExecCondition=/usr/bin/grep -q ^c2 /sys/firmware/devicetree/base/chosen/f8-camera-trial
+ExecStart=/usr/libexec/f8-pro/camera-start.py
+RemainAfterExit=yes
+TimeoutStartSec=45
+
+[Install]
+WantedBy=f8-desktop.target

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Sensor Relay
+Exec=/usr/bin/systemctl --user start f8-sensor-relay.service
+X-KDE-autostart-phase=2
+NoDisplay=true

@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/qqc2-breeze-style.git",
+  "tag": "6.7.5-1",
+  "commit": "fe98fc3681514f0dcee1a142e601e296ee8f2f3b",
+  "review": "CMake-only recipe, Qt6/KF dependencies reviewed",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed signer"
+  ],
+  "recipe_sha256": "eca9797f798e048013d8fe2355235f082a959fd7145f7bc3e1ce86b504f46649",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "c1e0a7154989b981ca0d3d2794f68e43f0b00eff977e8198f5c37c628f2a4cea"
+}

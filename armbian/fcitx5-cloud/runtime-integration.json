@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-03",
+  "package": "fcitx5-module-cloudpinyin",
+  "verified_version": "5.1.12-1",
+  "architecture": "arm64",
+  "repository": "Ubuntu resolute/universe",
+  "enabled": true,
+  "backend": "Baidu",
+  "minimum_pinyin_length": 4,
+  "cloud_candidate_index": 2,
+  "loaded_and_config_readback_verified": true,
+  "non_sensitive_https_test": "nihao; HTTP200; validJSON; 你好 present",
+  "installer": "tools/install-f8-cloudpinyin-root.py",
+  "personal_history_packaged": false
+}

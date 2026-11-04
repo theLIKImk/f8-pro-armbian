@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// R2: verify CPU regulator bus pinmux without running vendor OPP calibration.
+#include "f8-pro-firstboot-diagnostic.dts"
+/ {
+	model = "F8-PRO 6.1 secondboot regulator diagnostic R2";
+	chosen {
+		bootargs = "earlycon=uart8250,mmio32,0xfeb50000 console=ttyFIQ0 irqchip.gicv3_pseudo_nmi=0 rdinit=/init loglevel=8 ignore_loglevel panic=0 maxcpus=1 cpufreq.off=1 initcall_blacklist=rockchip_cpufreq_driver_init systemd.gpt_auto=0";
+	};
+	reserved-memory {
+		/delete-node/ drm-logo@00000000;
+		/delete-node/ drm-cubic-lut@00000000;
+	};
+};
+&display_subsystem {
+	status = "disabled";
+	/delete-property/ memory-region;
+	/delete-property/ memory-region-names;
+};
+&rga2 { status = "disabled"; };
+&rga3_core0 { status = "disabled"; };
+&rga3_core1 { status = "disabled"; };

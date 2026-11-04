@@ -1,0 +1,18 @@
+{
+  "scope": "Extracted host functions with fake input/algorithm/devices; not real touch or devres teardown test",
+  "candidate_sha256": "d7822db00ca3703a0ae439940b8eff1951dc87253db1476fc82e08f941220661",
+  "ubsan_passed": true,
+  "concurrent_bind_one_winner": true,
+  "wrong_owner_cannot_release": true,
+  "rebind_after_release": true,
+  "input_scenarios": 17,
+  "algorithm_mocked": true,
+  "covered": [
+    "gsl_claim_instance",
+    "gsl_release_instance",
+    "join_bytes",
+    "gsl_release_contacts",
+    "gsl3673_ts_worker"
+  ],
+  "test_output": "Binding exclusion/release/rebind and 17 input boundary/error scenarios passed"
+}

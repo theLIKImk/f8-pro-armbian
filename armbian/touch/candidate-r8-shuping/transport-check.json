@@ -1,0 +1,41 @@
+{
+  "scope": "Host C fault injection using extracted candidate functions and a fake bus; no real I2C or timing/algorithm test",
+  "candidate_sha256": "d7822db00ca3703a0ae439940b8eff1951dc87253db1476fc82e08f941220661",
+  "ubsan_passed": true,
+  "success_sequence_messages": 306,
+  "success_payloads_equal_independent_reference": true,
+  "injected_faults": 1252,
+  "nominal_delay_sequence_ms": [
+    20,
+    5,
+    5,
+    20,
+    20,
+    10,
+    10,
+    10,
+    20,
+    10,
+    10,
+    10
+  ],
+  "real_elapsed_time_verified": false,
+  "negative_errno_preserved": true,
+  "short_transfer_returns_eio": true,
+  "no_bus_transactions_after_first_error": true,
+  "covered": [
+    "gsl_write_interface",
+    "gsl_ts_write",
+    "gsl_ts_read",
+    "fw2buf",
+    "gsl_load_fw",
+    "test_i2c",
+    "startup_chip",
+    "reset_chip",
+    "clr_reg",
+    "gsl_program_chip",
+    "init_chip",
+    "check_mem_data"
+  ],
+  "test_output": "1252 injected faults stopped at the first failed/short transaction"
+}

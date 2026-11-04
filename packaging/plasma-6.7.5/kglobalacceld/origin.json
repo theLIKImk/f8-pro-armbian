@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kglobalacceld.git",
+  "tag": "6.7.5-1",
+  "commit": "09c3f5d94d1ea5bbe753dae7499395d2048b2e0b",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD only cmake build/DESTDIR install; signed source top-level CMake dependencies reviewed",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed verified release signer"
+  ],
+  "recipe_sha256": "333ba50dbc727786d55d71afe807c7a814a5614a9f3bd651f52205d2494cb1b8",
+  "built": true,
+  "package_sha256": "4bf4aba07e719aa2aef715f0031818a3d598429a59e29bf37bc572d17e182034"
+}

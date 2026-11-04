@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Vendor graph: VP2 -> DSI0 -> panel. Not an activation overlay.
+// Keep route/host disabled until full power, boot and driver validation.
+&route_dsi0 {
+	connect = <&vp2_out_dsi0>;
+	status = "disabled";
+};
+
+&dsi0 {
+	phys = <&mipidcphy0>;
+	status = "disabled";
+};
+
+&dsi0_in_vp2 {
+	status = "okay";
+};
+
+&dsi0_in_vp3 {
+	status = "disabled";
+};
+
+&mipidcphy0 {
+	status = "okay";
+};

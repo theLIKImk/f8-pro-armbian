@@ -1,0 +1,13 @@
+[Unit]
+Description=F8 USB OTG after desktop and SSH startup
+ConditionKernelCommandLine=f8_usb_u1=1
+After=f8-live-prepare.service f8-live-ssh.service sddm.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 -I /usr/libexec/f8-pro/usb-otg-start.py
+TimeoutStartSec=20
+
+[Install]
+WantedBy=f8-desktop.target

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=F8 First Run
+Name[zh_CN]=F8 首次开机向导
+Exec=/usr/bin/python3 /usr/local/lib/f8-pro/first-run.py
+OnlyShowIn=KDE;
+NoDisplay=true

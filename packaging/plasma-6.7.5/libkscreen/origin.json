@@ -1,0 +1,18 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/libkscreen.git",
+  "tag": "6.7.5-1",
+  "commit": "dad69555e2fa58aa8584c45b26b456339bfd7172",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD and signed source CMake requirements reviewed; KScreenLocker PAM files checked unchanged against recipe hashes",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed verified release signer",
+    "declare Qt6 Wayland dependency used by source"
+  ],
+  "auxiliary_sources": {},
+  "recipe_sha256": "e4c2b5773bac29ae0457fd4f921bee8688f4fe41b4634c4d4b8e8496746520ba",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "5cd433c11f8bd07b510383ce22d7527ab1eb2f0709ca7a4ac8dfe4e5b8e4e62b"
+}

@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: GPL-2.0-only
+#include "f8-pro-thirdboot-diagnostic.dts"
+/ {
+	model = "F8-PRO 6.1 RAM-overlay systemd evaluation R4";
+	chosen {
+		bootargs = "earlycon=uart8250,mmio32,0xfeb50000 console=ttyS2,1500000n8 irqchip.gicv3_pseudo_nmi=0 rdinit=/init loglevel=8 ignore_loglevel panic=0 cpufreq.off=1 initcall_blacklist=rockchip_cpufreq_driver_init systemd.gpt_auto=0 systemd.unit=f8-evaluation.target";
+	};
+};

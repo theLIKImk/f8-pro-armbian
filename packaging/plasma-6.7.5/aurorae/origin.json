@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/aurorae.git",
+  "tag": "6.7.5-1",
+  "commit": "b8680fa2dc32723a0a0f130864d786ade6e85082",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD only cmake build/DESTDIR install; signed source top-level CMake dependencies reviewed",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed verified release signer"
+  ],
+  "recipe_sha256": "c4c5cc7d3728bfb7f197e5bbeb14fca5492c1914df48809c0a77eeb245ca3f29",
+  "built": true,
+  "package_sha256": "2972bd4a086f0ec78ce304c027179de6cd911beaa160f6e5554e405fb05c8708"
+}

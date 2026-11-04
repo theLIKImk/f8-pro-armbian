@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Restore Plasma Keyboard
+Name[zh_CN]=F8 切回原屏幕键盘
+Exec=/usr/bin/python3 -I /usr/libexec/f8-pro/switch-keyboard.py plasma
+Icon=input-keyboard
+Categories=Settings;Utility;
+Terminal=false

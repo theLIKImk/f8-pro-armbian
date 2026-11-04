@@ -1,0 +1,10 @@
+{
+  "scope": "Unapplied isolated driver candidate; no module loaded or board enabled",
+  "source_sha256_normalized": "62063feca49f02542a737c1b40fc8e2e195a0828a85ce29c8e27bba753ce263e",
+  "candidate_sha256": "d7822db00ca3703a0ae439940b8eff1951dc87253db1476fc82e08f941220661",
+  "firmware_complete_32_word_pages": 147,
+  "evaluation_compatible": "f8-pro,gslx680-shuping-eval",
+  "vendor_compatible_matches_candidate": false,
+  "irq_reset_timing_algorithm_pm_validated": false,
+  "frozen_kernel_changed": false
+}

@@ -1,0 +1,3 @@
+make: Entering directory '/var/tmp/f8-pro-armbian/linux-rockchip-config'
+  CC [M]  /var/tmp/f8-pro-armbian/touch-driver-candidate/gsl3673.o
+make: Leaving directory '/var/tmp/f8-pro-armbian/linux-rockchip-config'

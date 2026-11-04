@@ -1,0 +1,282 @@
+{
+  "target_range": [
+    60,
+    120
+  ],
+  "unit": "Hz",
+  "mapping_method": "piecewise linear interpolation in period versus measured interval; extrapolate below measured 67.7Hz",
+  "measured_knots": [
+    {
+      "period": 122,
+      "interval_ms": 8.325,
+      "hz": 120.12012012012013
+    },
+    {
+      "period": 128,
+      "interval_ms": 8.733,
+      "hz": 114.50818733539447
+    },
+    {
+      "period": 157,
+      "interval_ms": 10.492,
+      "hz": 95.31071292413266
+    },
+    {
+      "period": 252,
+      "interval_ms": 13.308,
+      "hz": 75.14277126540426
+    },
+    {
+      "period": 280,
+      "interval_ms": 14.768,
+      "hz": 67.71397616468039
+    }
+  ],
+  "rates": {
+    "60": {
+      "period": 316,
+      "estimated": true
+    },
+    "61": {
+      "period": 311,
+      "estimated": true
+    },
+    "62": {
+      "period": 306,
+      "estimated": true
+    },
+    "63": {
+      "period": 301,
+      "estimated": true
+    },
+    "64": {
+      "period": 296,
+      "estimated": true
+    },
+    "65": {
+      "period": 292,
+      "estimated": true
+    },
+    "66": {
+      "period": 287,
+      "estimated": true
+    },
+    "67": {
+      "period": 283,
+      "estimated": true
+    },
+    "68": {
+      "period": 279,
+      "estimated": true
+    },
+    "69": {
+      "period": 275,
+      "estimated": true
+    },
+    "70": {
+      "period": 271,
+      "estimated": true
+    },
+    "71": {
+      "period": 267,
+      "estimated": true
+    },
+    "72": {
+      "period": 263,
+      "estimated": true
+    },
+    "73": {
+      "period": 259,
+      "estimated": true
+    },
+    "74": {
+      "period": 256,
+      "estimated": true
+    },
+    "75": {
+      "period": 252,
+      "estimated": true
+    },
+    "76": {
+      "period": 247,
+      "estimated": true
+    },
+    "77": {
+      "period": 241,
+      "estimated": true
+    },
+    "78": {
+      "period": 236,
+      "estimated": true
+    },
+    "79": {
+      "period": 230,
+      "estimated": true
+    },
+    "80": {
+      "period": 225,
+      "estimated": true
+    },
+    "81": {
+      "period": 220,
+      "estimated": true
+    },
+    "82": {
+      "period": 214,
+      "estimated": true
+    },
+    "83": {
+      "period": 209,
+      "estimated": true
+    },
+    "84": {
+      "period": 205,
+      "estimated": true
+    },
+    "85": {
+      "period": 200,
+      "estimated": true
+    },
+    "86": {
+      "period": 195,
+      "estimated": true
+    },
+    "87": {
+      "period": 191,
+      "estimated": true
+    },
+    "88": {
+      "period": 186,
+      "estimated": true
+    },
+    "89": {
+      "period": 182,
+      "estimated": true
+    },
+    "90": {
+      "period": 178,
+      "estimated": true
+    },
+    "91": {
+      "period": 174,
+      "estimated": true
+    },
+    "92": {
+      "period": 170,
+      "estimated": true
+    },
+    "93": {
+      "period": 166,
+      "estimated": true
+    },
+    "94": {
+      "period": 162,
+      "estimated": true
+    },
+    "95": {
+      "period": 158,
+      "estimated": true
+    },
+    "96": {
+      "period": 156,
+      "estimated": true
+    },
+    "97": {
+      "period": 154,
+      "estimated": true
+    },
+    "98": {
+      "period": 152,
+      "estimated": true
+    },
+    "99": {
+      "period": 151,
+      "estimated": true
+    },
+    "100": {
+      "period": 149,
+      "estimated": true
+    },
+    "101": {
+      "period": 147,
+      "estimated": true
+    },
+    "102": {
+      "period": 146,
+      "estimated": true
+    },
+    "103": {
+      "period": 144,
+      "estimated": true
+    },
+    "104": {
+      "period": 143,
+      "estimated": true
+    },
+    "105": {
+      "period": 141,
+      "estimated": true
+    },
+    "106": {
+      "period": 140,
+      "estimated": true
+    },
+    "107": {
+      "period": 138,
+      "estimated": true
+    },
+    "108": {
+      "period": 137,
+      "estimated": true
+    },
+    "109": {
+      "period": 135,
+      "estimated": true
+    },
+    "110": {
+      "period": 134,
+      "estimated": true
+    },
+    "111": {
+      "period": 133,
+      "estimated": true
+    },
+    "112": {
+      "period": 131,
+      "estimated": true
+    },
+    "113": {
+      "period": 130,
+      "estimated": true
+    },
+    "114": {
+      "period": 129,
+      "estimated": true
+    },
+    "115": {
+      "period": 127,
+      "estimated": true
+    },
+    "116": {
+      "period": 126,
+      "estimated": true
+    },
+    "117": {
+      "period": 125,
+      "estimated": true
+    },
+    "118": {
+      "period": 124,
+      "estimated": true
+    },
+    "119": {
+      "period": 123,
+      "estimated": true
+    },
+    "120": {
+      "period": 122,
+      "estimated": true
+    }
+  },
+  "note": "Targets are integer requests, not guaranteed exact or stable hardware frequencies. Actual IRQ rate is displayed during touch."
+}

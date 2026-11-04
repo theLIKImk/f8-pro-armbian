@@ -1,0 +1,22 @@
+{
+  "scope": "Isolated kernel driver object compilation and embedded-array verification; no module link/load or runtime test",
+  "kernel_release": "6.1.172-f8-pro-armbian-eval",
+  "source_matches_pinned_tree": true,
+  "elf_machine": "AArch64",
+  "object_sha256": "c4cea2668c9455ae03605738e632ca36d1e1be1cced7c42a1a7fe14332be617f",
+  "candidate_sha256": "d7822db00ca3703a0ae439940b8eff1951dc87253db1476fc82e08f941220661",
+  "arrays": [
+    {
+      "symbol": "f8_pro_r8_shuping_fw",
+      "bytes": 38808,
+      "sha256": "60a271f6b8ba14e12d8b46c89892b31df8dbbe3c6037cba829fa2af378206809"
+    },
+    {
+      "symbol": "f8_pro_r8_shuping_algorithm",
+      "bytes": 2048,
+      "sha256": "032de666c5e0ec4c8e6b8eacfd7a27559cb702071c08e4e0b1e128b287e643b8"
+    }
+  ],
+  "new_kernel_touch_enabled": false,
+  "algorithm_irq_reset_pm_runtime_verified": false
+}

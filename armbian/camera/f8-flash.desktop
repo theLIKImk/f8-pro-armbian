@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=F8 Flash
+Name[zh_CN]=F8 闪光灯
+Comment=Test the rear flash with an automatic 0.5 second timeout
+Exec=/usr/bin/python3 /usr/libexec/f8-pro/flash-panel.py
+Icon=camera-flash
+Terminal=false
+Categories=Utility;HardwareSettings;

@@ -1,0 +1,2 @@
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="F8 Hall Cover", TAG+="seat", TAG+="uaccess", SYMLINK+="input/f8-cover"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="F8 Haptic Motor", TAG+="seat", TAG+="uaccess", SYMLINK+="input/f8-haptic", ENV{FEEDBACKD_TYPE}="vibra"

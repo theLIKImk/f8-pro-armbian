@@ -1,0 +1,57 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=xdg-desktop-portal-kde
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='A backend implementation for xdg-desktop-portal using Qt/KF5'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcmutils
+         kconfig
+         kcoreaddons
+         kcrash
+         kdeclarative
+         kglobalaccel
+         kiconthemes
+         ki18n
+         kio
+         kio-fuse
+         kirigami
+         kirigami-addons
+         kitemviews
+         knotifications
+         kpipewire
+         kservice
+         kstatusnotifieritem
+         kwayland
+         kwindowsystem
+         libstdc++
+         libxkbcommon
+         qt6-base
+         qt6-declarative
+         wayland
+         xdg-desktop-portal)
+makedepends=(extra-cmake-modules
+             plasma-wayland-protocols
+             wayland-protocols)
+provides=(xdg-desktop-portal-impl)
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('5ebedc3dcf508e85f2f7bbddffa2cca6805650ffe1dce350c4a1dfc5d2f07c50'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  depends+=(plasma-workspace) # QML runtime dependency; avoid build cycle
+  DESTDIR="$pkgdir" cmake --install build
+}

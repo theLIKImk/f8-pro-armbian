@@ -1,0 +1,26 @@
+{
+  "sha256": "3b55fbfbb75e4d34866a057244915a74d07d2fdd03eb3e345311f68fa8998090",
+  "srcversion": "D6BE4387A2F56BE33C34415",
+  "vermagic": "6.1.115-vendor-rk35xx SMP mod_unload modversions aarch64",
+  "all_import_crcs_verified_against_actual_image": true,
+  "imports": {
+    "mutex_lock": 1308265803,
+    "mutex_unlock": 840167480,
+    "ktime_get": 3024065381,
+    "misc_deregister": 3027035870,
+    "platform_device_unregister": 2378769885,
+    "memset": 3703006381,
+    "platform_device_register_full": 3130908461,
+    "__stack_chk_fail": 2376489053,
+    "devm_iio_device_alloc": 2829266572,
+    "__mutex_init": 3472559263,
+    "devm_iio_kfifo_buffer_setup_ext": 1573693262,
+    "__devm_iio_device_register": 1688576991,
+    "misc_register": 1373834223,
+    "__arch_copy_from_user": 312795432,
+    "memcpy": 1210688638,
+    "iio_buffer_enabled": 3392997519,
+    "iio_push_to_buffers": 2798038667,
+    "module_layout": 619664432
+  }
+}

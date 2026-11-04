@@ -1,0 +1,16 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/plasma-keyboard.git",
+  "tag": "6.7.5-1",
+  "commit": "f8f602ec75e4c2758b93c04dcd1fa3d9951f50b6",
+  "review": "Official cmake-only recipe; runtime dependencies Qt Virtual Keyboard, Wayland and KF reviewed",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "pin signer",
+    "disable tests"
+  ],
+  "recipe_sha256": "12acaa7b98609d0a4196420ec43a11a1d71b89ef963f4dcd98a4dc3dfcbb8aac",
+  "built": true,
+  "additional_package_sha256": {},
+  "package_sha256": "80e461d7a8833639fadeabd0c1f415ce0139a6be0b8f52f06887a4e28d3ab7b4"
+}

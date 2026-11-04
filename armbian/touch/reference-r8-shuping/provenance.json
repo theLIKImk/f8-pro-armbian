@@ -1,0 +1,29 @@
+{
+  "scope": "Archived selected profile/reference C header only; not a driver integration or runtime proof",
+  "source_image_sha256": "90d648c1e4e47ce6b4a83415694fa9b4a7283465fa3749297d2078abb20bffa2",
+  "firmware": {
+    "compatible": "gslX680_shuping",
+    "of_entry_offset": 23649712,
+    "match_data_offset": 23650504,
+    "firmware_offset": 38433616,
+    "firmware_entries": 4851,
+    "firmware_bytes": 38808,
+    "firmware_sha256": "60a271f6b8ba14e12d8b46c89892b31df8dbbe3c6037cba829fa2af378206809",
+    "algorithm_offset": 38510640,
+    "algorithm_declared_u32_words": 512,
+    "algorithm_bytes": 2048,
+    "algorithm_sha256": "032de666c5e0ec4c8e6b8eacfd7a27559cb702071c08e4e0b1e128b287e643b8",
+    "config_words_at_24_28": [
+      800,
+      1280
+    ]
+  },
+  "observed_abs_mt_max": [
+    800,
+    1280
+  ],
+  "original_bytes_equal_relocated_analysis": true,
+  "new_kernel_profile_enabled": false,
+  "algorithm_runtime_contents_verified": false,
+  "c_header_sha256": "e6dc33cd09fb97adb6ef6deb3a55fbd4b6bc28bdfcd01e75cabb125a24df7b3a"
+}

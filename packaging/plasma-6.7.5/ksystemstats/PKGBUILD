@@ -1,0 +1,42 @@
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
+
+pkgname=ksystemstats
+pkgver=6.7.5
+_dirver=$(echo $pkgver | cut -d. -f1-3)
+pkgrel=1.1
+pkgdesc='A plugin based system monitoring daemon'
+arch=(aarch64)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL-2.0-or-later)
+depends=(glibc
+         kcoreaddons
+         kcrash
+         ki18n
+         kio
+         libksysguard
+         libstdc++
+         lm_sensors
+         qt6-base
+         solid)
+makedepends=(extra-cmake-modules
+             libnl
+             networkmanager-qt)
+optdepends=('libnl: network usage monitor'
+            'networkmanager-qt: network usage monitor'
+            'systemd-libs: GPU monitor')
+groups=(plasma)
+source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('27cfb9a189244b897ae23f3a8681e7c4b45cc67ec27faff8961783edce16f1fc'
+            'SKIP')
+validpgpkeys=('0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D')
+
+build() {
+  cmake -DCMAKE_AUTOGEN_PARALLEL=1 -B build  -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

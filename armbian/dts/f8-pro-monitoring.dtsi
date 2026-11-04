@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Vendor ADC keys and shutdown polarity; no thermal threshold relaxation.
+/ {
+	adc-keys {
+		compatible = "adc-keys";
+		io-channels = <&saradc 1>;
+		io-channel-names = "buttons";
+		keyup-threshold-microvolt = <0x1b7740>;
+		poll-interval = <0x64>;
+
+		vol-up-key {
+			label = "volume up";
+			linux,code = <0x73>;
+			press-threshold-microvolt = <0x4268>;
+		};
+
+		vol-down-key {
+			label = "volume down";
+			linux,code = <0x72>;
+			press-threshold-microvolt = <0x65ce8>;
+		};
+	};
+};
+&saradc { vref-supply = <&avcc_1v8_s0>; status = "okay"; };
+&tsadc { rockchip,hw-tshut-temp = <120000>; rockchip,hw-tshut-mode = <0>; rockchip,hw-tshut-polarity = <1>; status = "okay"; };
+&dmc { center-supply = <&vdd_ddr_s0>; mem-supply = <&vdd_log_s0>; status = "disabled"; };

@@ -1,0 +1,18 @@
+{
+  "wifi_profiles_empty": true,
+  "wireless_psk_scan_clean": true,
+  "ssh_host_keys_absent": true,
+  "ssh_user_keys_and_known_hosts_absent": true,
+  "ssh_opt_in": true,
+  "all_shadow_hashes_locked": true,
+  "only_setup_user": true,
+  "personal_homes_absent": true,
+  "private_key_scan_clean": true,
+  "cloudpinyin_default_enabled": true,
+  "removed_paths": [
+    "etc/NetworkManager/system-connections",
+    "var/lib/NetworkManager",
+    "etc/systemd/system/f8-live-ssh.service"
+  ],
+  "staging_root": "/var/tmp/f8-pro-armbian/release-20261103-r2/rootfs"
+}

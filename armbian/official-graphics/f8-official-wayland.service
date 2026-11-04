@@ -1,0 +1,19 @@
+[Unit]
+Description=Temporary F8-PRO KWin Wayland real DRM session
+Wants=systemd-logind.service dbus.service
+After=systemd-logind.service dbus.service
+
+[Service]
+Type=exec
+User=f8gpu
+PAMName=login
+TTYPath=/dev/tty1
+StandardInput=tty
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+Environment=XDG_SESSION_TYPE=wayland XDG_SEAT=seat0 XDG_VTNR=1 XDG_RUNTIME_DIR=/run/user/1600
+ExecStart=/usr/bin/dbus-run-session /bin/sh /usr/libexec/f8-pro/wayland-run
+RuntimeMaxSec=35
+TimeoutStopSec=5
+KillMode=control-group

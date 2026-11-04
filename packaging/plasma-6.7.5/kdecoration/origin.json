@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/kdecoration.git",
+  "tag": "6.7.5-1",
+  "commit": "125cab1fc22ff99e4e8f8755f3e945bf169df959",
+  "upstream_tag_signature_verified": false,
+  "review": "Official PKGBUILD build/package are cmake and DESTDIR install; signed source top-level CMake reviewed; only Qt/KF deps",
+  "changes": [
+    "aarch64",
+    "local pkgrel1.1",
+    "fixed verified release signer"
+  ],
+  "recipe_sha256": "24386aeef3070685f4febee5f2ce9eed817d632127d6a035fd29f28ea7111fa7",
+  "built": true,
+  "package_sha256": "5f0682a333610829f65a9acd3fa00fa468f5fb7d4896298e13cca57c8294bcc8"
+}

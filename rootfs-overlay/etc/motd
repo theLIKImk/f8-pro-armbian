@@ -1,0 +1,3 @@
+F8-PRO Arch Linux ARM diagnostic system
+Factory kernel 5.10.160; hardware acceptance and the desktop are unfinished.
+SSH uses a dedicated key. The alarm account has temporary passwordless sudo.

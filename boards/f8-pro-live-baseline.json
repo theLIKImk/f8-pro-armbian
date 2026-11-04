@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-27",
+  "basis": "Live original Ubuntu via authorized SSH; no hardware configuration changed",
+  "source_archives": [
+    {
+      "file": "f8-porting-20261027-ts6HVU.tar.gz",
+      "sha256": "7b7a2cf1ac338e0c890fa54a00d6c5685e952d2d5cfb6c76a293cf420443ca3d"
+    },
+    {
+      "file": "f8-porting-20261027-ts6HVU-followup.tar.gz",
+      "sha256": "fe8c114a7593d0863939a5c434259d6141b9b51cf8b700f3a0b2cdbb25f30b85"
+    }
+  ],
+  "board": {
+    "model": [
+      "Rockchip RK3588S TABLET V11 Board"
+    ],
+    "compatible": [
+      "rockchip,rk3588s-tablet-f12-v11",
+      "rockchip,rk3588"
+    ],
+    "live_dtb_sha256": "8697056e41b5caf53b3667a227dbce930e0cca9c39477da39c950e4273b36426"
+  },
+  "kernel": {
+    "release": "5.10.160",
+    "config_exactly_matches_recovered_original": true,
+    "live_boot_partition_prefix_sha256": "018d139a2bfe741e73db941583907293c52f2509a2328c738720fe6d849c1f83",
+    "boot_prefix_bytes_hashed": 40221184,
+    "boot_payload_exactly_matches_original": true
+  },
+  "storage": {
+    "device": "/dev/mmcblk0",
+    "bytes": 247463936000,
+    "root_partition": "/dev/mmcblk0p6",
+    "root_partition_bytes": 246960619520,
+    "root_partuuid": "614e0000-0000-4b53-8000-1d28000054a9",
+    "source": "Captured lsblk -b; all original partition sizes match"
+  },
+  "display": {
+    "connector": "DSI-1",
+    "width": 1200,
+    "height": 1920,
+    "refresh_hz": 60.09,
+    "session": "GNOME X11"
+  },
+  "gpu": {
+    "kernel_ddk": "g18p0-01eac0",
+    "egl_gles_probe": {
+      "api": "egl",
+      "vendor": "ARM",
+      "renderer": "Mali-G610",
+      "version": "OpenGL ES 3.2 v1.g13p0-01eac0.a8b6f0c7e1f83c654c60d1775112dbe4",
+      "pixel_rgba": [
+        64,
+        128,
+        191,
+        255
+      ],
+      "gl_error": 0,
+      "offscreen_clear_verified": true,
+      "software_renderer": false,
+      "egl_version": "1.4",
+      "loaded_libraries": [
+        "/usr/lib/aarch64-linux-gnu/libmali.so.1.9.0",
+        "/usr/lib/aarch64-linux-gnu/libmali_hook.so.1.9.0",
+        "/usr/lib/aarch64-linux-gnu/mali/libEGL.so.1",
+        "/usr/lib/aarch64-linux-gnu/mali/libGLESv2.so.2"
+      ]
+    },
+    "glx_context_query": {
+      "vendor": "Mesa/X.org",
+      "renderer": "llvmpipe (LLVM 12.0.0, 128 bits)",
+      "version": "3.1 Mesa 21.2.6",
+      "direct": true
+    },
+    "glx_full_readback_test": "failed with rockchip DRI loading errors and MIT-SHM BadMatch",
+    "conclusion": "EGL/GLES uses Mali-G610 and passed a tiny offscreen clear/readback; GLX uses llvmpipe. Desktop GPU acceptance incomplete."
+  },
+  "wifi": {
+    "module_observed": "bcmdhd_pcie",
+    "connected_when_collected": true,
+    "firmware": "/vendor/etc/firmware/fw_bcm43752a2_pcie_ag.bin",
+    "nvram": "/vendor/etc/firmware/nvram_AP6275P.txt",
+    "clm": "/vendor/etc/firmware/clm_bcm43752a2_pcie_ag.blob",
+    "config": "/vendor/etc/firmware/config.txt",
+    "reconnect_suspend_tests_passed": false,
+    "note": "CONFIG_BCMDHD=y coexists with the loaded external module; runtime module must be accounted for rather than suppressed based on config alone",
+    "module_and_selected_firmware_sha256_match_original": true
+  },
+  "bluetooth": {
+    "uart": "/dev/ttyS9",
+    "firmware": "/vendor/etc/firmware/BCM4362A2.hcd",
+    "controller_present": true,
+    "running_initializer_confirmed": true,
+    "pairing_audio_suspend_tested": false,
+    "firmware_sha256_matches_original": true
+  },
+  "sensors": {
+    "accelerometer": "MPU6500 vendor input gsensor, /dev/input/event2",
+    "compass": "AK8963 vendor input compass, /dev/input/event3",
+    "iio_devices_observed": [
+      "Rockchip SARADC"
+    ],
+    "sensorproxy_available": false,
+    "rotation_tested": false,
+    "gyro_runtime_interface_confirmed": false
+  },
+  "touch": {
+    "input_name": "gslX680_r8",
+    "event_device": "/dev/input/event4",
+    "functional_tested": false,
+    "xorg_input_warning_observed": true
+  },
+  "audio": {
+    "alsa_card": "rockchip,es8388-codec",
+    "playback_and_capture_enumerated": true,
+    "pulse_connection": "refused even with explicit native socket",
+    "playback_recording_tested": false
+  },
+  "camera": {
+    "sensor_drivers_observed": [
+      "GC5035",
+      "OV8858"
+    ],
+    "video_nodes_present": true,
+    "image_capture_tested": false
+  },
+  "power": {
+    "battery_driver": "CW2015",
+    "charger_driver": "BQ25890",
+    "battery_percent_at_collection": 62,
+    "status": "Charging",
+    "suspend_resume_tested": false
+  },
+  "arch_hardware_boot_tested": false,
+  "flashable_arch_image_ready": false
+}

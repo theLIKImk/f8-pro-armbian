@@ -1,0 +1,16 @@
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_core.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_ring.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_trigger.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_aux.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_magn.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_i2c.o
+  CC [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv_mpu_acpi.o
+  LD [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050.o
+  LD [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050-i2c.o
+  MODPOST /var/tmp/f8-pro-armbian/f8-motion-iio-s1/Module.symvers
+  LD [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050-i2c.ko
+  LD [M]  /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050.ko
+  BTF [M] /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050-i2c.ko
+Skipping BTF generation for /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050-i2c.ko due to unavailability of vmlinux
+  BTF [M] /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050.ko
+Skipping BTF generation for /var/tmp/f8-pro-armbian/f8-motion-iio-s1/inv-mpu6050.ko due to unavailability of vmlinux

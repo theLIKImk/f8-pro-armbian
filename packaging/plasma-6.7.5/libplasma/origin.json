@@ -1,0 +1,15 @@
+{
+  "upstream_repository": "https://gitlab.archlinux.org/archlinux/packaging/packages/libplasma.git",
+  "tag": "6.7.5-1",
+  "commit": "befeb401703388a75244b040d43118c9029c0faa",
+  "upstream_tag_signature_verified": false,
+  "review": "PKGBUILD cmake build/install only; signed source CMake dependencies reviewed",
+  "changes": [
+    "aarch64",
+    "local pkgrel .1",
+    "fixed verified release signer"
+  ],
+  "recipe_sha256": "14e69edd1888326ccca73fd0f48dedf9e02e0f2bb8bb60e38eda9a1389ec0eab",
+  "built": true,
+  "package_sha256": "5b0f0d2674829c7fbf4454c1f1fdb962bb9459623fa7b52d2399940e2bc43f2d"
+}

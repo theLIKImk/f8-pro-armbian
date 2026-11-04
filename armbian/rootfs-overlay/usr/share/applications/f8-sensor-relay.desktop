@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=F8 传感器中继与自动亮度
+Exec=/usr/local/bin/f8-sensor-relay
+Icon=preferences-system-power-management
+Categories=Settings;HardwareSettings;
+Terminal=false

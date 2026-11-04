@@ -1,0 +1,5 @@
+# Required by the KDE timezone selector, including its offline map provider.
+qml6-module-qtlocation
+qml6-module-qtpositioning
+qt6-location-plugins
+plasma-workspace-data

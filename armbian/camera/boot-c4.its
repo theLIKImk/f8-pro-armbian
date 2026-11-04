@@ -1,0 +1,17 @@
+/dts-v1/;
+/ {
+ description = "F8-PRO official Armbian GPU/display NATIVE DESKTOP T1 NOT APPROVED";
+ #address-cells = <1>;
+ images {
+  fdt { data = /incbin/("fdt"); type = "flat_dt"; arch = "arm64";
+   compression = "none"; load = <0xffffff00>; hash { algo = "sha256"; }; };
+  kernel { data = /incbin/("kernel"); type = "kernel"; arch = "arm64"; os = "linux";
+   compression = "none"; load = <0xffffff01>; entry = <0xffffff01>; hash { algo = "sha256"; }; };
+  ramdisk { data = /incbin/("ramdisk"); type = "ramdisk"; arch = "arm64"; os = "linux";
+   compression = "none"; load = <0xffffff02>; hash { algo = "sha256"; }; };
+  resource { data = /incbin/("resource"); type = "multi"; arch = "arm64";
+   compression = "none"; hash { algo = "sha256"; }; };
+ };
+ configurations { default = "conf"; conf { rollback-index = <0>;
+  kernel = "kernel"; fdt = "fdt"; ramdisk = "ramdisk"; multi = "resource"; }; };
+};

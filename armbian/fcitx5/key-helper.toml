@@ -1,0 +1,3 @@
+# X11 keycodes: only Ctrl/Shift/Alt; never unrestricted character injection.
+keycodes = [37, 105, 50, 62, 64, 108]
+log_directives = ["warn"]

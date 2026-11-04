@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Preserve vendor eMMC mode. No partition/root bootargs or flash operation.
+&sdhci {
+	max-frequency = <150000000>;
+	bus-width = <8>;
+	no-sdio;
+	no-sd;
+	non-removable;
+	mmc-hs200-1_8v;
+	/delete-property/ supports-cqe;
+	status = "okay";
+};
+
+// Board sleep/wakeup policy is not yet ported; do not inherit another tablet's.
+&rockchip_suspend {
+	status = "disabled";
+};

@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "validated_max_mhz": {"gpu": 1000, "cpu0": 1800, "cpu4": 2400, "cpu6": 2400},
+  "cpu_module_version": "p3",
+  "cpu_module_sha256": "35461712ee2e7d827163ae208ce1f3301a7b082f3a7a26d5cba5a508f55c1196"
+}

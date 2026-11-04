@@ -1,0 +1,6 @@
+[Unit]
+Description=F8-PRO official Armbian GPU and display trial
+Requires=basic.target
+After=basic.target
+Wants=f8-official-graphics.service f8-official-report.timer
+AllowIsolate=yes

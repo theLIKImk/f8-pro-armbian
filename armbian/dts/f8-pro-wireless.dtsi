@@ -1,0 +1,70 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Vendor AP6275P PCIe and UART9 wiring. Disabled pending power/firmware tests.
+/ {
+	f8_bt: wireless-bluetooth {
+		compatible = "bluetooth-platdata";
+		clocks = <&f8_rtc>;
+		clock-names = "ext_clock";
+		uart_rts_gpios = <&gpio3 RK_PD2 GPIO_ACTIVE_LOW>;
+		pinctrl-names = "default", "rts_gpio";
+		pinctrl-0 = <&uart9m2_rtsn &f8_bt_reset &f8_bt_wake &f8_bt_host_wake>;
+		pinctrl-1 = <&f8_uart9_gpio>;
+		BT,reset_gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
+		BT,wake_gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
+		BT,wake_host_irq = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
+		status = "disabled";
+	};
+	f8_wlan: wireless-wlan {
+		compatible = "wlan-platdata";
+		wifi_chip_type = "ap6275p";
+		pinctrl-names = "default";
+		pinctrl-0 = <&f8_wifi_host_wake>;
+		WIFI,poweren_gpio = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;
+		WIFI,host_wake_irq = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
+		status = "disabled";
+	};
+};
+&i2c6 {
+	status = "okay";
+	f8_rtc: hym8563@51 {
+		compatible = "haoyu,hym8563";
+		reg = <0x51>;
+		#clock-cells = <0>;
+		clock-frequency = <32768>;
+		clock-output-names = "hym8563";
+		pinctrl-names = "default";
+		pinctrl-0 = <&f8_rtc_int>;
+		interrupt-parent = <&gpio0>;
+		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
+		wakeup-source;
+		status = "disabled";
+	};
+};
+&pcie2x1l2 {
+	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+	rockchip,skip-scan-in-resume;
+	pinctrl-names = "default";
+	pinctrl-0 = <&f8_wifi_power>;
+	status = "disabled";
+};
+&combphy0_ps { status = "disabled"; };
+&uart9 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart9m2_xfer &uart9m2_ctsn>;
+	status = "disabled";
+};
+&pinctrl {
+	hym8563 {
+		f8_rtc_int: rtc-int { rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>; };
+	};
+	wireless-bluetooth {
+		f8_uart9_gpio: uart9-gpios { rockchip,pins = <3 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>; };
+		f8_bt_reset: bt-reset-gpio { rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>; };
+		f8_bt_wake: bt-wake-gpio { rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>; };
+		f8_bt_host_wake: bt-wake-host-irq { rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_down>; };
+	};
+	wireless-wlan {
+		f8_wifi_host_wake: wifi-host-wake-irq { rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>; };
+		f8_wifi_power: wifi-poweren-gpio { rockchip,pins = <0 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>; };
+	};
+};

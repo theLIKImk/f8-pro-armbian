@@ -1,0 +1,31 @@
+# Candidate Debian Trixie packages. Resolve against signed ARM64 metadata first.
+# No kwin-x11 or native X11 session requirement.
+plasma-workspace
+plasma-desktop
+kwin-wayland
+sddm
+maliit-keyboard
+qt6-virtualkeyboard-plugin
+qml6-module-qtquick-virtualkeyboard
+firmware-misc-nonfree
+libegl-mesa0
+libgbm1
+libgl1-mesa-dri
+mesa-utils
+libdrm-tests
+network-manager
+systemd-resolved
+openssh-server
+bluez
+rfkill
+python3
+sudo
+pipewire-audio
+powerdevil
+plasma-nm
+bluedevil
+polkit-kde-agent-1
+xdg-desktop-portal-kde
+iio-sensor-proxy
+qt6-wayland
+sddm-theme-debian-breeze
